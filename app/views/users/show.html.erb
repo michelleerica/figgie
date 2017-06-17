@@ -1,0 +1,14 @@
+<h2>User details</h2>
+
+<%=link_to_if @current_user == @user, 'Edit profile',
+edit_user_path(@user)%>
+<br>
+
+<img src="<%=@user.image%>" alt="profile pic">
+
+<p>Username: <%=@user.username%></p>
+<p>Full name: <%=@user.full_name%></p>
+<p>Email: <%=@user.email%></p>
+<p>Instagram: <%=@user.instagram%></p>
+<p>About me: <%=@user.bio%></p>
+<p>Website: <%=@user.website%></p>
