@@ -10,16 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616131520) do
+ActiveRecord::Schema.define(version: 20170617031333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cuisines", force: :cascade do |t|
+    t.text     "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cuisines_photos", force: :cascade do |t|
+    t.integer "cuisine_id"
+    t.integer "photo_id"
+  end
+
+  create_table "cuisines_venues", force: :cascade do |t|
+    t.integer "cuisine_id"
+    t.integer "venue_id"
+  end
 
   create_table "photos", force: :cascade do |t|
     t.string   "image"
     t.integer  "user_id"
     t.integer  "venue_id"
-    t.text     "dish_id"
+    t.text     "cuisine_id"
     t.text     "description"
     t.text     "price_range"
     t.datetime "created_at",  null: false
@@ -42,7 +58,7 @@ ActiveRecord::Schema.define(version: 20170616131520) do
   create_table "venues", force: :cascade do |t|
     t.string   "venue_name"
     t.string   "street_address"
-    t.integer  "postcode_id"
+    t.integer  "postcode"
     t.integer  "cuisine_id"
     t.string   "website"
     t.string   "price_range"
@@ -53,6 +69,8 @@ ActiveRecord::Schema.define(version: 20170616131520) do
     t.string   "phone"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "user_id"
+    t.string   "instagram"
   end
 
 end
