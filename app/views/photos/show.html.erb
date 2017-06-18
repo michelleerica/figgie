@@ -12,9 +12,6 @@
   <ul> <strong>need to exclude image currently showing</strong><br>
     <%@user.photos.each do |p|%>
     <%= link_to (image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
-    <br>
-
-
   <%end%>
 
   </ul>

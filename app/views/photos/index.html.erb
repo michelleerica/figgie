@@ -2,10 +2,13 @@
 
 <ul>
 
+
   <%@photos.each do |p|%>
-  <%=p.user.username%> took this photo at <%=p.venue.venue_name%>
+  <%=link_to p.user.username, user_path(p.user)%> took this photo at <%=p.venue.venue_name%>
   <br>
-  <%= image_tag p.image, :class => 'post_preview' %>
+  <%= link_to (image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
+
+
   <br>
 
 <%end%>
