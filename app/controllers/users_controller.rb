@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :get_user, only: [:show, :edit, :update]
+  before_action :get_user, only: [:show, :edit, :update, :photos]
 
 
   # before_action :check_if_admin, only: [:index]
@@ -38,6 +38,11 @@ class UsersController < ApplicationController
   end
 
   def show
+  end
+
+  def photos
+    @photos = Photo.all
+
   end
 
   def destroy

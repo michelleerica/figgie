@@ -1,25 +1,14 @@
 Rails.application.routes.draw do
 
-  get 'photos/new'
-
-  get 'photos/create'
-
-  get 'photos/edit'
-
-  get 'photos/update'
-
-  get 'photos/index'
-
-  get 'photos/show'
-
-  get 'photos/destroy'
-
 #consider changing the root later
 
-root to:'users#new'
+root to:'photos#index'
 
 #users
 resources :users
+resources :photos
+
+get '/users/:id/photos' => 'users#photos'
 
 #sessions
 get '/login' => 'session#new'

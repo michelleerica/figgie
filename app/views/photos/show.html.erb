@@ -1,2 +1,22 @@
-<h1>Photos#show</h1>
-<p>Find me in app/views/photos/show.html.erb</p>
+<h2>Photo - details</h2>
+
+  <%= image_tag @photo.image, :class => 'post_detail' %>
+  <br>
+
+  <br>
+  <%= image_tag @user.image, :class => 'user_detail' %>
+ <%=link_to @user.username, user_path(@user.id) %> said: <%= @photo.description %>
+  <br>
+  More on <%=link_to @user.username, user_path(@user.id) %> | <%=@user.bio%> |
+  Other posts by  <%=@user.username%> |
+  <ul> <strong>need to exclude image currently showing</strong><br>
+    <%@user.photos.each do |p|%>
+    <%= link_to (image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
+    <br>
+
+
+  <%end%>
+
+  </ul>
+
+</ul>
