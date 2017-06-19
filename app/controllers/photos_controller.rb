@@ -21,6 +21,9 @@ class PhotosController < ApplicationController
 
   def create
     @photo = @current_user.photos.create photo_params
+    # @photo.update photo_params
+    redirect_to @photo
+
   end
 
   def edit
@@ -39,6 +42,9 @@ class PhotosController < ApplicationController
   end
 
   def destroy
+    photo = Photo.find params[:id]
+    photo.destroy
+    redirect_to photos_path
   end
 
   private
