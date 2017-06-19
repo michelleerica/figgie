@@ -30,6 +30,8 @@ class PhotosController < ApplicationController
   end
 
   def update
+    @photo.update photo_params
+    redirect_to photo_path(params["id"])
   end
 
   def index
@@ -49,6 +51,6 @@ class PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:image, :user_id, :venue_id, :cuisine_id, :description, :price_range)
+    params.require(:photo).permit(:image, :user_id, :venue_id, :cuisine_id, :description, :price_range, :cuisine_id)
   end
 end

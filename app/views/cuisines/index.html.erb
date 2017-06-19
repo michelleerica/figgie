@@ -1,0 +1,13 @@
+<h2>All cuisines</h2>
+
+<ul>
+  <% @cuisines.each do |c|%>
+  <li>
+    <%= link_to c.category, cuisine_path(c.id) %>
+
+  </li>
+<%end%>
+
+</ul>
+
+<%=link_to 'add', new_cuisine_path(@user_id)%>

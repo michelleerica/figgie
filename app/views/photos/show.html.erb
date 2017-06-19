@@ -2,10 +2,16 @@
 
   <%= image_tag @photo.image, :class => 'post_detail' %>
   <br>
-  <%=link_to_if @current_user == @user, 'Edit',
-  edit_photo_path%>
-  <br>
+  Cuisine ID: <#%=@photo.cuisine.id%>
+  Venue ID: <%=@photo.venue.id%>
+
+
+
+
+<%if @current_user == @user%>
+  <%=link_to 'edit', edit_photo_path%> |
   <%= link_to 'delete', @photo, method: :delete, :data => {:confirm => "are you sure?"}%>
+  <%end%>
 
 
   <br>

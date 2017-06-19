@@ -9,6 +9,7 @@ root to:'photos#index'
 resources :users
 resources :photos
 resources :venues
+resources :cuisines
 
 get '/users/:id/photos' => 'users#photos'
 
