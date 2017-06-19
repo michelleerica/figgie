@@ -7,6 +7,8 @@
   <%=link_to p.user.username, user_path(p.user)%> took this photo at <%=p.venue.venue_name%>
   <br>
   <%= link_to (image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
+  <%= link_to 'delete', photo_path(p.id)%>
+
 
 
   <br>

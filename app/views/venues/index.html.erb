@@ -1,0 +1,11 @@
+<h2>All venues</h2>
+
+<ul>
+  <% @venues.each do |v|%>
+  <li>
+    <%= link_to v.venue_name, venue_path(v.id) %>
+
+  </li>
+<%end%>
+
+</ul>

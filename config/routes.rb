@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
 #consider changing the root later
 
 root to:'photos#index'
@@ -7,8 +8,10 @@ root to:'photos#index'
 #users
 resources :users
 resources :photos
+resources :venues
 
 get '/users/:id/photos' => 'users#photos'
+
 
 #sessions
 get '/login' => 'session#new'

@@ -12,8 +12,8 @@
     <div class="topnav" id="myTopnav">
         <%=link_to 'figgie', root_path, :id => 'logo' %>
         <%=link_to 'food', photos_path %>
-        <%=link_to 'venues', photos_path %>
-        <%=link_to 'friends', photos_path %>
+        <%=link_to 'venues', venues_path %>
+        <%=link_to 'friends', users_path %>
         <% unless @current_user.present?%>
           <%=link_to 'Login', login_path %> | <%=link_to 'Sign up', new_user_path%>
         <%else%>
