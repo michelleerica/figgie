@@ -1,7 +1,12 @@
-<h2>Photo - details</h2>
+<h2>Food - details</h2>
 
   <%= image_tag @photo.image, :class => 'post_detail' %>
   <br>
+  <%=link_to_if @current_user == @user, 'Edit',
+  edit_photo_path%>
+  <br>
+  <%= link_to 'delete', photo_path(@photo.id), method: :delete%>
+
 
   <br>
   <%= image_tag @user.image, :class => 'user_detail' %>
@@ -12,6 +17,7 @@
   <ul> <strong>need to exclude image currently showing</strong><br>
     <%@user.photos.each do |p|%>
     <%= link_to (image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
+
   <%end%>
 
   </ul>

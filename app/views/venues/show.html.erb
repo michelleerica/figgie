@@ -1,8 +1,22 @@
 <h2>Venue - details</h2>
 
 Name: <%=@venue.venue_name%>
+<br>
 ID: <%=@venue.id%>
 <br>
 Postcode: <%=@venue.postcode%>
 <br>
 Description: <%=@venue.business_description%>
+
+<ul>
+  <%@venue.photos.each do |p|%>
+  <%= link_to (image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
+  <br>
+
+  <%= p.user.username %> said: <%= p.description %>
+  <br>
+
+
+<%end%>
+
+</ul>

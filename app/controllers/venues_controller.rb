@@ -7,6 +7,8 @@ class VenuesController < ApplicationController
   end
 
   def new
+    @venue = Venue.new
+    @user = @venue.user
   end
 
   def create

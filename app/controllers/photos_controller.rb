@@ -5,9 +5,9 @@ class PhotosController < ApplicationController
   # before_action :get_user, only: [:show, :edit, :update]
 
   # before_action :check_if_admin, only: [:index]
-  # def get_user
-  #   @user = User.find params["id"]
-  # end
+  def get_user
+    @user = User.find params["id"]
+  end
 
   def get_photo
     @photo = Photo.find params["id"]
@@ -15,10 +15,12 @@ class PhotosController < ApplicationController
 
   def new
     @photo = Photo.new
+    @user = @photo.user
+
   end
 
   def create
-    @photo = User.first.photos.create photo_params
+    @photo = @current_user.photos.create photo_params
   end
 
   def edit

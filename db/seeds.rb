@@ -9,8 +9,8 @@ p5 = Photo.create image: "http://www.fillmurray.com/190/420", description: "so g
 puts "Created #{ Photo.all.length } photos."
 
 User.destroy_all
-u1 = User.create username: "Michelle", full_name: "Michelle Lo", email: "michellemichelle@gmail.com", password: 'chicken'
-u2 = User.create username: "Bob", full_name: "Bob Lo", email: "bob@gmail.com", password: 'chicken'
+u1 = User.create username: "Michelle", full_name: "Michelle Lo", email: "michellemichelle@gmail.com", password: 'chicken', image: "https://tippie.uiowa.edu/sites/tippie.uiowa.edu/files/images/directory/highly-michelle.jpg"
+u2 = User.create username: "Bob", full_name: "Bob Lo", email: "bob@gmail.com", password: 'chicken', image: "https://yt3.ggpht.com/-uJh4oSQAwak/AAAAAAAAAAI/AAAAAAAAAAA/AMGKfKvDP3w/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
 puts "Created #{ User.all.length } users."
 
 Venue.destroy_all
