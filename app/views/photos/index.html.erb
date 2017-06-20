@@ -2,12 +2,11 @@
 
 <%=link_to 'add', new_photo_path(@user_id)%>
 
-
 <ul>
   <%@photos.each do |p|%>
     <%=link_to p.user.username, user_path(p.user)%> took this photo at <%=p.venue.venue_name%>
     <br>
-    <%= link_to (image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
+    <%= link_to (cl_image_tag p.image), photo_path(p.id) %>
 
     <br>
   <%end%>

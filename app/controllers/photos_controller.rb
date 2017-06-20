@@ -26,9 +26,20 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = @current_user.photos.create photo_params
+    # raise 'hell'
+    @photo = @current_user.photos.new photo_params
     # @photo.update photo_params
     # raise 'hell'
+    if params[:file].present?
+      #perform upload to cloudinary
+      req = Cloudinary::Uploader.upload params[:file]
+      @photo.image = req['public_id']
+
+    end
+
+
+    @photo.save
+
     redirect_to @photo
 
   end
@@ -38,6 +49,16 @@ class PhotosController < ApplicationController
 
   def update
     @photo.update photo_params
+    if params[:file].present?
+      #perform upload to cloudinary
+      req = Cloudinary::Uploader.upload params[:file]
+      @photo.image = req['public_id']
+
+    end
+
+
+    @photo.save
+
     redirect_to photo_path(params["id"])
   end
 
