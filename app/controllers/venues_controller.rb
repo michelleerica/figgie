@@ -12,6 +12,10 @@ class VenuesController < ApplicationController
   end
 
   def create
+    @venue = @current_user.venues.create venue_params
+    # @photo.update photo_params
+    # raise 'hell'
+    redirect_to @venue
   end
 
   def edit
@@ -28,5 +32,13 @@ class VenuesController < ApplicationController
   end
 
   def destroy
+    venue = Venue.find params[:id]
+    venue.destroy
+    redirect_to venues_path
+  end
+
+  private
+  def venue_params
+    params.require(:venue).permit(:venue_name, :street_address, :postcode, :website)
   end
 end

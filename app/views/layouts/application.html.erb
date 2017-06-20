@@ -16,7 +16,7 @@
         <%=link_to 'friends', users_path %>
         <%=link_to 'cuisines', cuisines_path %>
         <% unless @current_user.present?%>
-          <%=link_to 'Login', login_path %> | <%=link_to 'Sign up', new_user_path%>
+          <%=link_to 'Login', login_path %>  <%=link_to 'Sign up', new_user_path%>
         <%else%>
           <%=link_to @current_user.username, user_path(@current_user)%>
           <%#=link_to "/users/@current_user.id/photos", profile%>

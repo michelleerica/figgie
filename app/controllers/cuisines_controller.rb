@@ -16,7 +16,7 @@ class CuisinesController < ApplicationController
   end
 
   def show
-    @cuisine = Cuisine.find params["id"]
+    @cuisine = Cuisine.find_by :id => params[:id]
   end
 
   def destroy

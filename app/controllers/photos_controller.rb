@@ -1,6 +1,8 @@
 class PhotosController < ApplicationController
 
   before_action :get_photo, only: [:show, :edit, :update]
+  # before_action :get_venues, only: [:show, :edit, :update]
+
 
   # before_action :get_user, only: [:show, :edit, :update]
 
@@ -13,6 +15,10 @@ class PhotosController < ApplicationController
     @photo = Photo.find params["id"]
   end
 
+  # def get_venues
+  #   @venues = Venue.all
+  # end
+
   def new
     @photo = Photo.new
     @user = @photo.user
@@ -22,6 +28,7 @@ class PhotosController < ApplicationController
   def create
     @photo = @current_user.photos.create photo_params
     # @photo.update photo_params
+    # raise 'hell'
     redirect_to @photo
 
   end
@@ -51,6 +58,6 @@ class PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:image, :user_id, :venue_id, :cuisine_id, :description, :price_range, :cuisine_id)
+    params.require(:photo).permit(:image, :user_id, :venue_id, :description, :price_range, :cuisine_id)
   end
 end

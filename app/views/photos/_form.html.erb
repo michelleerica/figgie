@@ -14,11 +14,13 @@
   <br>
 
   <%= f.label :venue_id %>
-  <%= f.text_field :venue_id %>
-  <br>
+  <%= f.collection_select( :venue_id, Venue.all, :id, :venue_name, :prompt => "Pick a venue") %> | <%=link_to 'add', new_venue_path(@user_id)%>
 
-  <%= f.label :cuisine_id %>
-  <%= f.text_field :cuisine_id %>
+  <br>
+  <%= f.label :cuisines %> (select cuisines)
+  <%#= f.text_field :cuisine.id %>
+    <br>
+    <%= f.collection_select( :cuisine_ids, Cuisine.all, :id, :category, {include_blank: true }, {:multiple => true}) %>
   <br>
 
 
