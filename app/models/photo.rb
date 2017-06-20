@@ -1,7 +1,6 @@
 class Photo < ApplicationRecord
   belongs_to :user, optional: true
-  belongs_to :venue, optional: true
-  has_and_belongs_to_many :cuisines
+  belongs_to :dish, optional: true
 
 
 end

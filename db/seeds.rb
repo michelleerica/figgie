@@ -1,10 +1,15 @@
+Dish.destroy_all
+
+d1 = Dish.create name: "burger"
+d2 = Dish.create name: "sushi"
+
 Photo.destroy_all
 
-p1 = Photo.create image: "http://www.fillmurray.com/343/432", description: "Super yummy awesomeness", price_range: "$10-20"
-p2 = Photo.create image: "http://www.fillmurray.com/343/500", description: "Delicious", price_range: "$50-70"
-p3 = Photo.create image: "http://www.fillmurray.com/250/432", description: "pretty ok", price_range: "$100-150"
-p4 = Photo.create image: "http://www.fillmurray.com/250/432", description: "yum", price_range: "$100-150"
-p5 = Photo.create image: "http://www.fillmurray.com/190/420", description: "so good", price_range: "$10-15"
+p1 = Photo.create image: "http://img.taste.com.au/3mYHXsD_/taste/2016/11/sushi-for-kids-81300-1.jpeg", description: "Super yummy awesomeness", price_range: "$10-20"
+p2 = Photo.create image: "http://www.makesushi.com/wp-content/uploads/2015/02/mosaic-sushi-roll-evolution.jpg", description: "Delicious", price_range: "$50-70"
+p3 = Photo.create image: "http://www.bunburyforum.com.au/_source/img/dining-img/24112016_pmad_jll_bunbury_forum_sushi_o.jpg", description: "pretty ok", price_range: "$100-150"
+p4 = Photo.create image: "http://www.burgermeadelaide.com/wp-content/uploads/2013/02/fancy-burger_rs.jpg?w=690", description: "yum", price_range: "$100-150"
+p5 = Photo.create image: "https://media-cdn.tripadvisor.com/media/photo-s/06/f1/72/43/fb-s-fancy-burgers.jpg", description: "so good", price_range: "$10-15"
 
 puts "Created #{ Photo.all.length } photos."
 
@@ -33,16 +38,25 @@ u1.venues << v1
 u2.venues << v2
 
 #photos connected to venues
-v1.photos << p1 << p2 << p3 << p4
-v2.photos << p5
+# v1.photos << p1 << p2 << p3 << p4
+# v2.photos << p5
+#photos of dishes
 
-#link photos to cuisines (M2M)
-c1.photos << p1 << p2 << p3 << p4
-p5.cuisines << c2
+d2.photos << p1 << p2 << p3
+d1.photos << p4 << p5
 
-#link cuisines to venues (M2M)
-v1.cuisines << c1
-c2.venues << v2
+# #dishes at venues
+# d1.venues << v2
+# d2.venues << v1
+
+#link dishes to cuisines (M2M)
+c1.dishes << d2
+d1.cuisines << c2
+
+
+#link dish to venues (M2M)
+v1.dishes << d1
+d2.venues << v2
 
 #
 # s6.mixtapes << m2 << m3
