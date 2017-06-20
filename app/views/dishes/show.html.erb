@@ -3,12 +3,12 @@
 
 <h2>Food - details</h2>
 
-<%= cl_image_tag @photo.image %>
+<!-- <%#= cl_image_tag @dish.photos.image %> -->
   <%#raise 'hell'%>
   <br>
   Cuisine:
   <ul>
-    <% @photo.cuisines.each do |c|%>
+    <% @dish.cuisines.each do |c|%>
     <li>
       <%= link_to c.category, cuisine_path(c.id) %>
 
@@ -23,9 +23,9 @@
 
 
   <br>
-  <%= cl_image_tag @user.image %>
+  <%#= cl_image_tag @user.image %>
 
-  <%=link_to @user.username, user_path(@user.id) %> said: <%= @photo.description %>
+  <%=link_to @user.username, user_path(@user.id) %> said: <%#= @photo.description %>
   <br>
   More on <%=link_to @user.username, user_path(@user.id) %> | <%=@user.bio%> |
   Other posts by  <%=@user.username%> |

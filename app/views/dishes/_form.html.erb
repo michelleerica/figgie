@@ -1,33 +1,6 @@
 
 <%= form_for @dish, html: {multipart: true} do |f| %>
 
-  <%= f.label :venue_id %>
-  <%= f.collection_select( :venue_id, Venue.all, :id, :venue_name, :prompt => "Pick a venue") %> | <%=link_to 'add', new_venue_path(@user_id)%>
-  <br>
-
-  <%= f.label :image %>
-  <%= f.cl_image_upload :image %>
-  <br>
-
-  <%= f.label :image %>
-  <%= f.cl_image_upload :image %>
-  <br>
-
-  <%= f.label :image %>
-  <%= f.cl_image_upload :image %>
-  <br>
-
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <br>
-
-  <%= f.label :price_range %>
-  <%= f.text_field :price_range %>
-  <br>
-
-  <%= f.label :venue_id %>
-  <%= f.collection_select( :venue_id, Venue.all, :id, :venue_name, :prompt => "Pick a venue") %> | <%=link_to 'add', new_venue_path(@user_id)%>
-
   <br>
   <%= f.label :cuisines %> (select cuisines)
   <%#= f.text_field :cuisine.id %>

@@ -35,16 +35,16 @@ class PhotosController < ApplicationController
       @photo.image = req['public_id']
     end
 
-    # if @photo.save
-    #   # save was successful, now add cuisine associations
-    #   cuisines = Cuisine.where id: params[:photo][:cuisine_ids]
-    #   @photo.cuisines << cuisines
-    #   redirect_to photo_path(@photo)
-    # else
-    #   render :new
-    # end
+    if @photo.save
+      # save was successful, now add cuisine associations
+      cuisines = Cuisine.where id: params[:photo][:cuisine_ids]
+      @photo.cuisines << cuisines
+      redirect_to photo_path(@photo)
+    else
+      render :new
+    end
 
-    
+
 
   end
 

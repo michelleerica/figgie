@@ -1,9 +1,9 @@
 
 <%= form_for @photo, html: {multipart: true} do |f| %>
-<!--
-  <%#= f.label :dish.venue_id %>
-  <%#= f.collection_select( :venue_id, Venue.all, :id, :venue_name, :prompt => "Pick a venue") %> | <%#=link_to 'add', new_venue_path(@user_id)%>
-  <br> -->
+
+  <%#= f.label :dish.venue_ids %>
+  <%#= f.collection_select( :venue_ids, Venue.all, :id, :venue_name, :prompt => "Pick a venue") %> | <%#=link_to 'add', new_venue_path(@user_id)%>
+  <br>
 
   <%= f.label :image %>
   <%= f.cl_image_upload :image %>

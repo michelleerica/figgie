@@ -1,13 +1,13 @@
 class DishesController < ApplicationController
   before_action :get_dish, only: [:show, :edit, :update]
-
-  def get_user
-    @user = User.find params["id"]
-  end
-
-  def get_photo
-    @photo = Photo.find params["id"]
-  end
+  #
+  # def get_user
+  #   @user = User.find params["id"]
+  # end
+  #
+  # def get_photo
+  #   @photo = Photo.find params["id"]
+  # end
 
   def get_dish
     @dish = Dish.find params["id"]
@@ -15,7 +15,7 @@ class DishesController < ApplicationController
 
   def new
     @dish = Dish.new
-    @user = @dish.user
+    # @user = @dish.user
   end
 
   def create
@@ -30,15 +30,17 @@ class DishesController < ApplicationController
 
         if @dish.save
           # save was successful, now add cuisine associations
-          cuisines = Cuisine.where id: params[:dish][:cuisine_ids]
-          @dish.cuisines << cuisines
-          redirect_to dish_path(@dish)
 
-          venue = Venue.where id: params[:dish][:venue_ids]
+
+          venues = Venue.where id: params[:dish][:venue_ids]
           @dish.venues << venues
           redirect_to dish_path(@dish)
+
+          cuisines = Cuisine.where id: params[:dish][:cuisine_ids]
+          @dish.cuisines << cuisines
+          # redirect_to dish_path(@dish)
         else
-          render :new
+          # render :new
         end
   end
 
@@ -52,6 +54,12 @@ class DishesController < ApplicationController
   end
 
   def show
+    @photo = @dish.photos.first
+
+    # @photo = Photo.find params["id"]
+
+    @user = @photo.user
+
   end
 
   def destroy
