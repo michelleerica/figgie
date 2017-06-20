@@ -44,6 +44,8 @@ class PhotosController < ApplicationController
     #   render :new
     # end
 
+    
+
   end
 
   def edit

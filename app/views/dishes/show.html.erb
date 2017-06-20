@@ -1,9 +1,19 @@
+<h1>Dish#show</h1>
+<p>Find me in app/views/dish/show.html.erb</p>
+
 <h2>Food - details</h2>
 
 <%= cl_image_tag @photo.image %>
   <%#raise 'hell'%>
   <br>
+  Cuisine:
+  <ul>
+    <% @photo.cuisines.each do |c|%>
+    <li>
+      <%= link_to c.category, cuisine_path(c.id) %>
 
+    </li>
+  <%end%>
   <br>
   <%if @current_user == @user%>
     <%=link_to 'edit', edit_photo_path%> |

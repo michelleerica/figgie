@@ -4,13 +4,16 @@ ID: <%=@cuisine.id%>
 
 
 <ul>
-  <%@cuisine.photos.each do |p|%>
-  <%= link_to (image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
-  <br>
-  Venue: <%= @cuisine.venues.pluck (:venue_name)%>
-  <br>
-  <%= link_to p.user.username, user_path(p.id) %> said: <%= p.description %>
-  <br>
+  <%@cuisine.dishes.each do |d|%>
+    <%d.photos.each do |p|%>
+      <%= link_to (image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
+      <br>
+      Venue: <%= @cuisine.venues.pluck (:venue_name)%>
+      <br>
+      <%= link_to p.user.username, user_path(p.id) %> said: <%= p.description %>
+      <br>
+    <%end%>
+
 
 
 <%end%>

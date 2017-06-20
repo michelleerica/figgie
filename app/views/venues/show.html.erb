@@ -11,12 +11,11 @@ Description: <%=@venue.business_description%>
 <%= link_to 'delete', @venue, method: :delete, :data => {:confirm => "are you sure?"}%>
 
 <ul>
-  <%@venue.photos.each do |p|%>
-  <%= link_to (image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
-  <br>
-
-  <%= p.user.username %> said: <%= p.description %>
-  <br>
+  <%@venue.dishes.each do |d|%>
+    <%d.photos.each do |p|%>
+      <%= link_to (image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
+      <br>
+  <%end%>
 
 
 
