@@ -26,21 +26,23 @@ class PhotosController < ApplicationController
   end
 
   def create
-    # raise 'hell'
+
     @photo = @current_user.photos.new photo_params
-    # @photo.update photo_params
-    # raise 'hell'
+
     if params[:file].present?
       #perform upload to cloudinary
       req = Cloudinary::Uploader.upload params[:file]
       @photo.image = req['public_id']
-
     end
 
-
-    @photo.save
-
-    redirect_to @photo
+    if @photo.save
+      # save was successful, now add cuisine associations
+      cuisines = Cuisine.where id: params[:photo][:cuisine_ids]
+      @photo.cuisines << cuisines
+      redirect_to photo_path(@photo)
+    else
+      render :new
+    end
 
   end
 

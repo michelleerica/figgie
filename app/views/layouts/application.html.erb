@@ -22,9 +22,8 @@
           <%=link_to @current_user.username, user_path(@current_user)%>
 
           <%#=link_to "/users/@current_user.id/photos", profile%>
-
-        <%= link_to 'Logout', login_path, method: :delete%>
-        <%= link_to (image_tag @current_user.image),user_path(@current_user), :class => 'user_detail' %>
+          <%= link_to 'Logout', login_path, method: :delete%>
+          <%= link_to (image_tag @current_user.image),user_path(@current_user), :id => "usericon"  %>
 
 
         <%end%>

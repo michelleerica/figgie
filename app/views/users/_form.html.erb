@@ -1,5 +1,5 @@
 
-<%= form_for @user do |f| %>
+<%= form_for @user, html: {multipart: true} do |f| %>
 
   <%= f.label :username %>
   <%= f.text_field :username %>
@@ -21,7 +21,7 @@
   <br>
 
   <%= f.label :image %>
-  <%= f.text_field :image %>
+  <%= f.cl_image_upload :image %>
   <br>
 
   <%= f.label :instagram %>
