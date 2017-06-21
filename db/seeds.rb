@@ -1,7 +1,9 @@
 Dish.destroy_all
 
-d1 = Dish.create name: "burger"
-d2 = Dish.create name: "sushi"
+d1 = Dish.create name: "sushi"
+d2 = Dish.create name: "burger"
+d3 = Dish.create name: "waffles"
+d4 = Dish.create name: "sandwich"
 
 Photo.destroy_all
 
@@ -10,40 +12,53 @@ p2 = Photo.create image: "http://www.makesushi.com/wp-content/uploads/2015/02/mo
 p3 = Photo.create image: "http://www.bunburyforum.com.au/_source/img/dining-img/24112016_pmad_jll_bunbury_forum_sushi_o.jpg", description: "pretty ok", price_range: "$100-150"
 p4 = Photo.create image: "http://www.burgermeadelaide.com/wp-content/uploads/2013/02/fancy-burger_rs.jpg?w=690", description: "yum", price_range: "$100-150"
 p5 = Photo.create image: "https://media-cdn.tripadvisor.com/media/photo-s/06/f1/72/43/fb-s-fancy-burgers.jpg", description: "so good", price_range: "$10-15"
+p6 = Photo.create image: "http://www.ikea.com/au/en/images/products/vafflor-waffles-frozen__0463622_PE608823_S4.JPG", description: "fancy waffles", price_range: "$10-15"
+p7 = Photo.create image: "http://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/10/9/4/WU1110H_Chicken-and-Waffles_s4x3.jpg.rend.hgtvcom.616.462.jpeg", description: "pretty standard", price_range: "$10-15"
+p8 = Photo.create image: "http://d2gk7xgygi98cy.cloudfront.net/1873-3-large.jpg", description: "Waffles were amazing", price_range: "$10-15"
+p9 = Photo.create image: "http://s3.amazonaws.com/spoonuniversi-wpengine/spoonuniversi/wp-content/uploads/sites/2/2013/03/waffle.jpg", description: "lunch", price_range: "$10-15"
+
 
 puts "Created #{ Photo.all.length } photos."
 
 User.destroy_all
-u1 = User.create username: "Michelle", full_name: "Michelle Lo", email: "michellemichelle@gmail.com", password: 'chicken', image: "https://tippie.uiowa.edu/sites/tippie.uiowa.edu/files/images/directory/highly-michelle.jpg"
-u2 = User.create username: "Bob", full_name: "Bob Lo", email: "bob@gmail.com", password: 'chicken', image: "https://yt3.ggpht.com/-uJh4oSQAwak/AAAAAAAAAAI/AAAAAAAAAAA/AMGKfKvDP3w/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
+u1 = User.create username: "Michelle", full_name: "Michelle", email: "michellemichelle@gmail.com", password: 'chicken', image: "https://tippie.uiowa.edu/sites/tippie.uiowa.edu/files/images/directory/highly-michelle.jpg"
+u2 = User.create username: "Bob", full_name: "Bob", email: "bob@gmail.com", password: 'chicken', image: "https://yt3.ggpht.com/-uJh4oSQAwak/AAAAAAAAAAI/AAAAAAAAAAA/AMGKfKvDP3w/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"
+u3 = User.create username: "Mel", full_name: "Mel", email: "mel@gmail.com", password: 'chicken', image: "https://pbs.twimg.com/profile_images/624500774811234304/u3C5awjX.jpg"
 puts "Created #{ User.all.length } users."
 
 Venue.destroy_all
 
 v1 = Venue.create venue_name: "Masuya", postcode: 2000, business_description: "Japanese at its best"
 v2 = Venue.create venue_name: "Burgers & Co", postcode: 2000, business_description: "We serve burgers"
+v3 = Venue.create venue_name: "Waffle and stuff", postcode: 2000, business_description: "Waffle-mania"
 
 puts "Created #{ Venue.all.length } venues."
 
 Cuisine.destroy_all
 c1 = Cuisine.create category: "Japanese"
 c2 = Cuisine.create category: "Modern Australian"
+c3 = Cuisine.create category: "Fancy Pants"
+c4 = Cuisine.create category: "American"
 
 #connect photos and users
-u1.photos << p1 << p2 << p3 << p4
-u2.photos << p5
+u1.photos << p1 << p2 << p3 << p6
+u2.photos << p5 << p8
+u3.photos << p4 << p7 << p9
+
 
 # user created venues
 u1.venues << v1
-u2.venues << v2
+u2.venues << v2 << v3
 
 #photos connected to venues
 # v1.photos << p1 << p2 << p3 << p4
 # v2.photos << p5
 #photos of dishes
 
-d2.photos << p1 << p2 << p3
-d1.photos << p4 << p5
+d1.photos << p1 << p2 << p3
+d2.photos << p4 << p5
+d3.photos << p6 << p7 << p8 << p9
+d4.photos << p9
 #
 # connect dishes to users
 
@@ -52,13 +67,17 @@ d1.photos << p4 << p5
 # d2.venues << v1
 
 #link dishes to cuisines (M2M)
-c1.dishes << d2
-d1.cuisines << c2
+c1.dishes << d1
+d2.cuisines << c2
+c3.dishes << d3
 
 
 #link dish to venues (M2M)
 v1.dishes << d1
-d2.venues << v2
+d2.venues << v2 << v3
+d4.venues << v3
+
+
 
 #
 # s6.mixtapes << m2 << m3

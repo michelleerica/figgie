@@ -26,7 +26,7 @@
   <br>
 
   <%= f.label :dish_id %>
-  <%= f.collection_select( :dish_id, Dish.all, :id, :name, :prompt => "Pick a dish") %> | <%=link_to 'add', new_dish_path(@user_id)%>
+  <%= f.collection_check_boxes( :dish_id, Dish.all, :id, :name, :prompt => "Pick a dish") %> | <%=link_to 'add', new_dish_path(@user_id)%>
 
   <br>
   <!-- <%#= f.label :cuisines %> (select cuisines) -->

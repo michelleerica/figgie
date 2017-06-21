@@ -17,11 +17,7 @@
 
     </li>
     <%end%>
-  <br>
-  <%if @current_user == @user%>
-    <%=link_to 'edit', edit_photo_path%> |
-    <%= link_to 'delete', @photo, method: :delete, :data => {:confirm => "Are you sure?"}%>
-  <%end%>
+
 
   <br>
   <!-- <div class="selfie">
@@ -30,8 +26,8 @@
 </div>
   <%#=link_to @dish.user.username, user_path(@dish.user.id) %> said: <%#= @photo.description %>
   <br> -->
-  Other photos of  <%=@dish.name%> |
-  <ul> <strong>need to exclude image currently showing</strong><br>
+  Other photos of <%=@dish.name%> |
+  <ul>
   <%@dish.photos.each do |p|%>
   <div class="index">
     <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
