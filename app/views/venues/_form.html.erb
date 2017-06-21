@@ -1,5 +1,5 @@
 
-<%= form_for @venue do |f| %>
+<%= form_for @venue do |f|%>
 
   <%= f.label :venue_name %>
   <%= f.text_field :venue_name %>
@@ -11,6 +11,10 @@
 
   <%= f.label :postcode %>
   <%= f.text_field :postcode %>
+  <br>
+
+  <%= f.label :business_description %>
+  <%= f.text_field :business_description %>
   <br>
 
   <%= f.label :website %>

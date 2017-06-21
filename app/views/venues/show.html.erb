@@ -7,19 +7,19 @@ ID: <%=@venue.id%>
 Postcode: <%=@venue.postcode%>
 <br>
 Description: <%=@venue.business_description%>
-
+<br>
+Address: <%=@venue.street_address%>
+<br>
 <%= link_to 'delete', @venue, method: :delete, :data => {:confirm => "are you sure?"}%>
-
-<ul>
   <%@venue.dishes.each do |d|%>
-    <%d.photos.each do |p|%>
-<div class="show">
-  <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
-</div>
-  <%end%>
+      <%=d.name%>
+      <div class="col-md-6">
+        <%d.photos.each do |p|%>
+          <div class="index">
+        <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
+        </div>
 
-
+        <%end%>
+      </div>
 
 <%end%>
-
-</ul>
