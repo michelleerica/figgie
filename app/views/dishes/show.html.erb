@@ -3,7 +3,11 @@
 <!-- <%#= cl_image_tag @dish.photos.image %> -->
   <%#raise 'hell'%>
   <br>
+  <div class="show">
     <%=@dish.name%>
+    <br>
+    <%=cl_image_tag @dish.photos.first.image%>
+</div>
 <br>
   Cuisine:
   <ul>
@@ -20,16 +24,15 @@
   <%end%>
 
   <br>
-  <!-- <div class="selfie"> -->
+  <!-- <div class="selfie">
 
-  <%= cl_image_tag @user.image%>
-<!-- </div> -->
-  <%=link_to @dish.user.username, user_path(@dish.user.id) %> said: <%#= @photo.description %>
-  <br>
-  More on <%=link_to @dish.user.username, user_path(@dish.user.id), class:"index" %> | <%=@dish.user.bio%> |
-  Other posts by  <%=@dish.user.username%> |
+  <%#= cl_image_tag @user.image%>
+</div>
+  <%#=link_to @dish.user.username, user_path(@dish.user.id) %> said: <%#= @photo.description %>
+  <br> -->
+  Other photos of  <%=@dish.name%> |
   <ul> <strong>need to exclude image currently showing</strong><br>
-  <%@dish.user.photos.each do |p|%>
+  <%@dish.photos.each do |p|%>
   <div class="index">
     <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
 

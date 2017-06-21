@@ -15,8 +15,8 @@
   <%=link_to @user.username, user_path(@user.id) %> said: <%= @photo.description %>
   <br>
   More on <%=link_to @user.username, user_path(@user.id) %> | <%=@user.bio%> |
-  Other posts by  <%=@user.username%> |
-  <ul> <strong>need to exclude image currently showing</strong><br>
+  Other photos uploaded by  <%=@user.username%> |
+  <ul>
   <%@user.photos.each do |p|%>
     <div class="index">
     <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'post_preview' %>

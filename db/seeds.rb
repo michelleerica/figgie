@@ -5,7 +5,7 @@ d2 = Dish.create name: "sushi"
 
 Photo.destroy_all
 
-p1 = Photo.create image: "http://img.taste.com.au/3mYHXsD_/taste/2016/11/sushi-for-kids-81300-1.jpeg", description: "Super yummy awesomeness", price_range: "$10-20"
+p1 = Photo.create image: "http://img.taste.com.au/3mYHXsD_/taste/2016/11/sushi-for-kids-81300-1.jpeg", description: "Sushi", price_range: "$10-20"
 p2 = Photo.create image: "http://www.makesushi.com/wp-content/uploads/2015/02/mosaic-sushi-roll-evolution.jpg", description: "Delicious", price_range: "$50-70"
 p3 = Photo.create image: "http://www.bunburyforum.com.au/_source/img/dining-img/24112016_pmad_jll_bunbury_forum_sushi_o.jpg", description: "pretty ok", price_range: "$100-150"
 p4 = Photo.create image: "http://www.burgermeadelaide.com/wp-content/uploads/2013/02/fancy-burger_rs.jpg?w=690", description: "yum", price_range: "$100-150"
@@ -44,6 +44,8 @@ u2.venues << v2
 
 d2.photos << p1 << p2 << p3
 d1.photos << p4 << p5
+#
+# connect dishes to users
 
 # #dishes at venues
 # d1.venues << v2

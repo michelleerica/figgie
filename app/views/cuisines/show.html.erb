@@ -11,13 +11,8 @@ ID: <%=@cuisine.id%>
       <br>
       Venue: <%= @cuisine.dishes.first.venues.pluck (:venue_name)%>
       <br>
-      <%= link_to p.user.username, user_path(p.id) %> said: <%= p.description %>
-      </div>
-      <br>
-    <%end%>
 
-
-
+<%end%>
 <%end%>
 
 </ul>

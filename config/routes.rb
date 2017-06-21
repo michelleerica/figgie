@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 #consider changing the root later
 
-root to:'photos#index'
+root to:'dishes#index'
 
 #users
 resources :users
