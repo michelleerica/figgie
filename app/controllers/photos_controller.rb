@@ -7,9 +7,6 @@ class PhotosController < ApplicationController
   # before_action :get_user, only: [:show, :edit, :update]
 
   # before_action :check_if_admin, only: [:index]
-  def get_user
-    @user = User.find params["id"]
-  end
 
   def get_photo
     @photo = Photo.find params["id"]
@@ -35,14 +32,17 @@ class PhotosController < ApplicationController
       @photo.image = req['public_id']
     end
 
-    if @photo.save
-      # save was successful, now add cuisine associations
-      cuisines = Cuisine.where id: params[:photo][:cuisine_ids]
-      @photo.cuisines << cuisines
+    @photo.save
+
+    # if @photo.save
+    #   # save was successful, now add cuisine associations
+    #   cuisines = Cuisine.where id: params[:photo][:cuisine_ids]
+    #   @photo.dishes << cuisines
       redirect_to photo_path(@photo)
-    else
-      render :new
-    end
+    # else
+    #   render :new
+    # end
+
 
 
 

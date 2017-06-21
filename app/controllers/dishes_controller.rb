@@ -20,18 +20,17 @@ class DishesController < ApplicationController
 
   def create
 
-        @dish = @current_user.dishes.new dish_params
+        @dish = @current_user.dishes.new(dish_params)
 
-        if params[:file].present?
-          #perform upload to cloudinary
-          req = Cloudinary::Uploader.upload params[:file]
-          @dish.image = req['public_id']
-        end
+
+        # if params[:file].present?
+        #   #perform upload to cloudinary
+        #   req = Cloudinary::Uploader.upload params[:file]
+        #   @photo.image = req['public_id']
+        # end
 
         if @dish.save
           # save was successful, now add cuisine associations
-
-
           venues = Venue.where id: params[:dish][:venue_ids]
           @dish.venues << venues
           redirect_to dish_path(@dish)
@@ -51,6 +50,8 @@ class DishesController < ApplicationController
   end
 
   def index
+    @dishes = Dish.all
+
   end
 
   def show
@@ -58,15 +59,23 @@ class DishesController < ApplicationController
 
     # @photo = Photo.find params["id"]
 
-    @user = @photo.user
+    @user = @dish.user
 
   end
 
   def destroy
+    dish = Dish.find params[:id]
+    dish.destroy
+    redirect_to dishes_path
   end
 
   private
   def dish_params
-    params.require(:dish).permit(:image, :user_id, :venue_id, :description, :price_range, :cuisine_id, :photo_id, :venue_id)
+    params.require(:dish).permit(:user_id, :venue_id, :description, :price_range, :cuisine_id, :photo_id, :venue_id)
   end
+
+  # def photo_params
+  #   params.require(:photo).permit(:image, :user_id, :venue_id, :description, :price_range, :cuisine_id)
+  # end
+
 end

@@ -21,6 +21,7 @@ font-family: 'Lobster', cursive;
 font-family: 'Poiret One', cursive;*/
 
  /* Add a black background color to the top navigation */
+
  .topnav {
      background-color: #333;
      overflow: hidden;
@@ -59,7 +60,11 @@ a {
 }
 
 #logo {
-  color: rgb(223, 31, 81)
+  color: rgb(223, 31, 81);
+}
+
+#logo {
+  border-radius: 90%;
 }
 
 /*#usericon {

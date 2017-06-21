@@ -1,2 +1,19 @@
-<h1>Dish#index</h1>
-<p>Find me in app/views/dish/index.html.erb</p>
+<h2>All dishes</h2>
+
+<%=link_to 'add', new_dish_path(@user_id)%>
+
+<ul>
+  <%@dishes.each do |d|%>
+    <%=d.name%>
+    <%d.photos.each do |p|%>
+
+  <div class="see">
+    <!-- <%#=link_to p.user.username, user_path(p.user)%> took this photo at <%#=p.venue.venue_name%> -->
+    <br>
+    <%= link_to (cl_image_tag p.image), photo_path(p.id) %>
+
+  </div>
+  <%end%>
+  <%end%>
+
+</ul>
