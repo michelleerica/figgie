@@ -12,24 +12,24 @@
       <%= link_to c.category, cuisine_path(c.id) %>
 
     </li>
-  <%end%>
+    <%end%>
   <br>
   <%if @current_user == @user%>
     <%=link_to 'edit', edit_photo_path%> |
     <%= link_to 'delete', @photo, method: :delete, :data => {:confirm => "Are you sure?"}%>
   <%end%>
 
-
-
   <br>
-  <%= cl_image_tag @user.image class="index"%>
+  <!-- <div class="selfie"> -->
 
-  <%=link_to @user.username, user_path(@user.id) %> said: <%#= @photo.description %>
+  <%= cl_image_tag @user.image%>
+<!-- </div> -->
+  <%=link_to @dish.user.username, user_path(@dish.user.id) %> said: <%#= @photo.description %>
   <br>
-  More on <%=link_to @user.username class="index", user_path(@user.id) %> | <%=@user.bio%> |
-  Other posts by  <%=@user.username%> |
+  More on <%=link_to @dish.user.username, user_path(@dish.user.id), class:"index" %> | <%=@dish.user.bio%> |
+  Other posts by  <%=@dish.user.username%> |
   <ul> <strong>need to exclude image currently showing</strong><br>
-  <%@user.photos.each do |p|%>
+  <%@dish.user.photos.each do |p|%>
   <div class="index">
     <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
 

@@ -9,7 +9,7 @@ ID: <%=@cuisine.id%>
     <div class="show">
       <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
       <br>
-      Venue: <%= @cuisine.venues.pluck (:venue_name)%>
+      Venue: <%= @cuisine.dishes.first.venues.pluck (:venue_name)%>
       <br>
       <%= link_to p.user.username, user_path(p.id) %> said: <%= p.description %>
       </div>

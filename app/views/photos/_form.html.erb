@@ -29,7 +29,7 @@
   <%= f.collection_select( :dish_id, Dish.all, :id, :name, :prompt => "Pick a dish") %> | <%=link_to 'add', new_dish_path(@user_id)%>
 
   <br>
-  <%#= f.label :cuisines %> (select cuisines)
+  <!-- <%#= f.label :cuisines %> (select cuisines) -->
   <%#= f.text_field :cuisine.id %>
   <br>
   <%#= f.collection_select( :cuisine_ids, Cuisine.all, :id, :category, {include_blank: true }, {:multiple => true}) %>

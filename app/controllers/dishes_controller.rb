@@ -1,6 +1,9 @@
 class DishesController < ApplicationController
   before_action :get_dish, only: [:show, :edit, :update]
-  #
+
+  before_action :check_if_logged_in, except: [:show, :index]
+
+    #
   # def get_user
   #   @user = User.find params["id"]
   # end
@@ -20,27 +23,41 @@ class DishesController < ApplicationController
 
   def create
 
-        @dish = @current_user.dishes.new(dish_params)
+    # raise 'hell'
+
+    @dish = @current_user.dishes.new(dish_params)
 
 
-        # if params[:file].present?
-        #   #perform upload to cloudinary
-        #   req = Cloudinary::Uploader.upload params[:file]
-        #   @photo.image = req['public_id']
-        # end
+    if params[:file].present?
 
-        if @dish.save
-          # save was successful, now add cuisine associations
-          venues = Venue.where id: params[:dish][:venue_ids]
-          @dish.venues << venues
-          redirect_to dish_path(@dish)
+      photo = Photo.new description: params[:description], user: @current_user
 
-          cuisines = Cuisine.where id: params[:dish][:cuisine_ids]
-          @dish.cuisines << cuisines
-          # redirect_to dish_path(@dish)
-        else
-          # render :new
-        end
+      #perform upload to cloudinary
+      req = Cloudinary::Uploader.upload params[:file]
+      photo.image = req['public_id']
+
+      if photo.save
+        puts "=" * 50
+        puts "SAVED PHOTO", photo
+
+        @dish.photos << photo
+      end
+
+    end  # cloudinary upload
+
+
+    if @dish.save
+      # save was successful, now add cuisine associations
+      venues = Venue.where id: params[:dish][:venue_ids]
+      @dish.venues << venues
+
+      cuisines = Cuisine.where id: params[:dish][:cuisine_ids]
+      @dish.cuisines << cuisines
+
+      redirect_to dish_path(@dish)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -55,10 +72,8 @@ class DishesController < ApplicationController
   end
 
   def show
-    @photo = @dish.photos.first
-
+    # @photo = @dish.photos.first
     # @photo = Photo.find params["id"]
-
     @user = @dish.user
 
   end

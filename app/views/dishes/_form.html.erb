@@ -6,17 +6,23 @@
   <%= f.collection_select( :venue_ids, Venue.all, :id, :venue_name) %>
   <br>
 
-  <%= f.label "Image" %>
-  <%=link_to 'add photo', new_photo_path %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
 
+  <%#= f.label "Image" %>
+  <%#=link_to 'add photo', new_photo_path %>
 
-  <!-- <%#= f.cl_image_upload :image %> -->
+  <%= f.cl_image_upload :image %>
+  <%= label_tag :image_description %>
+  <%= text_field_tag :description %>
+
 <br>
 
-<%= f.label "Name of dish" %>
-<%= f.collection_select( :id, Dish.all, :id, :name, :prompt => "Pick a dish") %>
+<%#= f.label "Name of dish" %>
+<%#= f.collection_select( :id, Dish.all, :id, :name, :prompt => "Pick a dish") %>
+<%#= f.text_field :name %>
 
-  <%= f.text_field :name %>
   <br>
   <%= f.label :cuisines %> (select cuisines)           <%=link_to 'add', new_cuisine_path %>
 
