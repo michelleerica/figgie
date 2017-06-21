@@ -38,7 +38,7 @@ class PhotosController < ApplicationController
     #   # save was successful, now add cuisine associations
     #   cuisines = Cuisine.where id: params[:photo][:cuisine_ids]
     #   @photo.dishes << cuisines
-      redirect_to photo_path(@photo)
+      redirect_to new_dish_path
     # else
     #   render :new
     # end
@@ -83,6 +83,6 @@ class PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:image, :user_id, :venue_id, :description, :price_range, :cuisine_id)
+    params.require(:photo).permit(:image, :user_id, :venue_id, :description, :price_range, :cuisine_id, :dish_id)
   end
 end

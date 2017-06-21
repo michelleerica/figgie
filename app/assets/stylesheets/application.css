@@ -1,18 +1,4 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+
  @import url('https://fonts.googleapis.com/css?family=Lobster|Patrick+Hand+SC|Poiret+One|Spectral');
 
  /*font-family: 'Spectral', serif;
@@ -52,7 +38,7 @@ font-family: 'Poiret One', cursive;*/
 
 body {
   background-color:rgba(145, 122, 226, 0.49);
-  font-family: 'Poiret One', cursive;*/
+  font-family: 'Poiret One', cursive;
 }
 
 a {
@@ -61,24 +47,78 @@ a {
 
 #logo {
   color: rgb(223, 31, 81);
+  /*border-radius: 90%;*/
 }
 
-#logo {
+#icon {
   border-radius: 90%;
+  max-width: 30px;
+}
+/*.see {
+border-width: thick;
+}*/
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
 }
 
-/*#usericon {
-  width: 50px;
-}*/
-.see {
-border-width: thick;
+.index {
+  display: inline;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+}
+
+.index img {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 30%;
+}
+
+.selfie img {
+  max-width: 20px;
+  max-height: 20px;
+  border-radius: 30%;
+  display: inline;
+}
+.show img {
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 30%;
+  display: inline;
+}
+
+/*
+div > img{
+  height:200px;
+  width:200px;
 }
 
 img {
   max-width: 100px;
   max-height: 100px;
   border-radius: 50%;
-}
+  margin: 0 auto;
+  /*clear: both;*/
+  /*border-top: solid 1px;*/
+  /*margin: -200px 0 0 350px;
+  flex-flow: row nowrap;*/
+  /*float:left*/
+  /*position: relative;*/
+
+
+
+/*}*/
 
 .post_detail{
   max-width: 200px

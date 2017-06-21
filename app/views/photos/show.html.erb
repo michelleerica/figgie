@@ -1,18 +1,16 @@
 <h2>Food - details</h2>
-
+<div class="show">
 <%= cl_image_tag @photo.image %>
-  <br>
-
-  <br>
-  <%if @current_user == @user%>
+    <%if @current_user == @user%>
+    <br>
     <%=link_to 'edit', edit_photo_path%> |
     <%= link_to 'delete', @photo, method: :delete, :data => {:confirm => "Are you sure?"}%>
   <%end%>
+</div>
 
-
-
-  <br>
+<div class="selfie">
   <%= cl_image_tag @user.image %>
+</div>
 
   <%=link_to @user.username, user_path(@user.id) %> said: <%= @photo.description %>
   <br>
@@ -20,7 +18,9 @@
   Other posts by  <%=@user.username%> |
   <ul> <strong>need to exclude image currently showing</strong><br>
   <%@user.photos.each do |p|%>
-  <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
+    <div class="index">
+    <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
+    </div>
 
 <%end%>
 

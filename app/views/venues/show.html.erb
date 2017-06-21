@@ -13,8 +13,9 @@ Description: <%=@venue.business_description%>
 <ul>
   <%@venue.dishes.each do |d|%>
     <%d.photos.each do |p|%>
-      <%= link_to (image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
-      <br>
+<div class="show">
+  <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
+</div>
   <%end%>
 
 

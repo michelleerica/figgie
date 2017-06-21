@@ -1,23 +1,41 @@
 
 <%= form_for @dish, html: {multipart: true} do |f| %>
 
-  <%= f.label "Where did you eat?" %> (select venue)
+  <%= f.label "Where did you eat?" %> (select venue) <%=link_to 'add', new_venue_path %>
   <br>
   <%= f.collection_select( :venue_ids, Venue.all, :id, :venue_name) %>
   <br>
 
   <%= f.label "Image" %>
+  <%=link_to 'add photo', new_photo_path %>
+
+
   <!-- <%#= f.cl_image_upload :image %> -->
 <br>
-  <%= f.label "Name of dish" %>
+
+<%= f.label "Name of dish" %>
+<%= f.collection_select( :id, Dish.all, :id, :name, :prompt => "Pick a dish") %>
+
   <%= f.text_field :name %>
   <br>
   <%= f.label :cuisines %> (select cuisines)           <%=link_to 'add', new_cuisine_path %>
 
   <br>
-  <%= f.collection_select( :cuisine_ids, Cuisine.all, :id, :category, {include_blank: false }, {:multiple => true}) %>
+  <%= f.collection_select( :cuisine_ids, Cuisine.all, :id, :category, {include_blank: false }, {:multiple => true})%>
+
+  <%= f.check_box :cuisine_ids, { multiple: true }, Cuisine.all, false %>
+
   <br>
 
   <%= f.submit %>
 
 <% end %>
+<!--
+= form_for @week_selection do |f|
+  - days = ['Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat', 'Sun']
+  - days.each do |day|
+    = f.check_box :days, { multiple: true }, day, false
+    label day
+  = f.submit
+
+  <%#= f.check_box :cuisine_ids, { multiple: true }, Cuisine.all, false %> -->
