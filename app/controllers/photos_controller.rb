@@ -1,12 +1,7 @@
 class PhotosController < ApplicationController
 
   before_action :get_photo, only: [:show, :edit, :update]
-  # before_action :get_venues, only: [:show, :edit, :update]
 
-
-  # before_action :get_user, only: [:show, :edit, :update]
-
-  # before_action :check_if_admin, only: [:index]
 
   def get_photo
     @photo = Photo.find params["id"]
