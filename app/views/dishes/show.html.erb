@@ -8,7 +8,6 @@
     <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
 
   </div>
-
   <%end%>
 
 <br>
@@ -16,6 +15,7 @@ Cuisine:
 <ul>
     <% @dish.cuisines.each do |c|%>
       <%= link_to c.category, cuisine_path(c.id) %>
+      <br>
     <%end%>
 </ul>
 
@@ -26,7 +26,6 @@ Category:
       <%= link_to c.name, categories_path(c.id) %>
     <%end%>
   </ul>
-
   <br>
   <!-- <div class="selfie">
 

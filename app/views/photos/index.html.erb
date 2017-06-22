@@ -1,14 +1,14 @@
-<h2>All photos</h2>
-
 <%=link_to 'add', new_photo_path(@user_id)%>
 
-<div class="col-xs-12">
+<div class="row">
 <ul>
   <%@photos.each do |p|%>
-  <div class="index">
+  <div class=".col-md-4">
     <!-- <%#=link_to p.user.username, user_path(p.user)%> took this photo at <%#=p.venue.venue_name%> -->
     <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
-
+    <div>
+      <h6><%=p.user.username%> ate this at <%= p.dish.venue.venue_name%></h6>
+    </div>
   </div>
   <%end%>
 </div>

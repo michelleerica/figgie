@@ -19,33 +19,32 @@
 
   <body>
     <div class="topnav" id="myTopnav">
-        <%=link_to 'figgie', root_path, :id => 'logo' %>
-        <!-- <%=link_to 'food', photos_path %> -->
-        <%=link_to 'venues', venues_path %>
-        <%=link_to 'friends', users_path %>
-        <%=link_to 'cuisines', cuisines_path %>
-        <%=link_to 'categories', categories_path %>
-        <% unless @current_user.present?%>
-          <%=link_to 'Login', login_path %>  <%=link_to 'Sign up', new_user_path%>
-        <%else%>
-          <!-- <%#=link_to @current_user.username, user_path(@current_user)%> -->
+      <%=link_to 'figgie', root_path, :id => 'logo' %>
+      <!-- <%=link_to 'food', photos_path %> -->
+      <%=link_to 'venues', venues_path %>
+      <%=link_to 'friends', users_path %>
+      <%=link_to 'cuisines', cuisines_path %>
+      <%=link_to 'categories', categories_path %>
 
-          <%#=link_to "/users/@current_user.id/photos", profile%>
-          <%= link_to 'Logout', login_path, method: :delete%>
-          <%= link_to (cl_image_tag @current_user.image, :id => 'icon'), user_path(@current_user)  %>
-          <%=link_to '+', new_dish_path %>
+      <div class="navbar-right">
 
+      <% unless @current_user.present?%>
+        <%=link_to 'Login', login_path %>  <%=link_to 'Sign up', new_user_path%>
+      <%else%>
 
-
-        <%end%>
-</div>
-    <nav>
+        <%= link_to 'Logout', login_path, method: :delete%>
+        <%= link_to (cl_image_tag @current_user.image, :id => 'icon'), user_path(@current_user)%>
+        <%=link_to '+ ', new_dish_path %>
+      <%end%>
+      </div>
+    </div>
+    <div class="container-fluid">
       <% unless @current_user.present?%>
         <%=link_to 'Login', login_path %> | <%=link_to 'Sign up', new_user_path%>
       <%else%>
         Welcome, <%=link_to @current_user.username, user_path(@current_user)%>
       <%end%>
-    </nav>
+    </div>
 
     <div class="container">
       <%= yield %>

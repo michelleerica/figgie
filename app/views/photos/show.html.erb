@@ -12,9 +12,10 @@
   <%= cl_image_tag @user.image %>
 
 
-  <%=link_to @user.username, user_path(@user.id) %> said: <%= @photo.description %>
+  <%=link_to @user.username, user_path(@user.id) %> ate this at <%=link_to @photo.dish.venue.venue_name, venue_path(@photo.dish.venue.id)%>
+  <br>
+  Comment: <%= @photo.description %>
   </div>
-  More on <%=link_to @user.username, user_path(@user.id) %> | <%=@user.bio%> |
   Other photos uploaded by  <%=@user.username%> |
   <ul>
   <%@user.photos.each do |p|%>

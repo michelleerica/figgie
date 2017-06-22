@@ -58,6 +58,11 @@ class DishesController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    # @dish.update dish_params
+    # redirect_to dish_path(params["id"])
 
     #add authentication
     if params[:file].present?
@@ -75,25 +80,27 @@ class DishesController < ApplicationController
 
     end  # cloudinary upload
 
-    # if @dish.save
-    #   # # save was successful, now add cuisine associations
-    #   categories = Category.where id: params[:dish][:category_ids]
-    #   @dish.categories << categories
-    #
-    #   cuisines = Cuisine.where id: params[:dish][:cuisine_ids]
-    #   @dish.cuisines << cuisines
-    #
-    #   redirect_to dish_path(@dish)
-    # else
-    #   render :new
-    # end
+    # raise 'hell'
 
-  end
+    if @dish.save
+      # # save was successful, now add cuisine associations
 
-  def update
-    @dish.update dish_params
-    redirect_to dish_path(params["id"])
+      # raise 1
 
+      categories = Category.where id: params[:dish][:category_ids]
+      # @dish.categories = nil
+      @dish.update(categories: categories) # update REPLACES the existing associations
+
+      cuisines = Cuisine.where id: params[:dish][:cuisine_ids]
+      # @dish.cuisines =[]
+      @dish.update(cuisines: cuisines)  # update REPLACES the existing associations
+
+      # raise params
+
+      redirect_to dish_path(@dish)
+    else
+      render :edit
+    end
 
   end
 
@@ -112,7 +119,7 @@ class DishesController < ApplicationController
   def destroy
     dish = Dish.find params[:id]
     dish.destroy
-    redirect_to dishes_path
+    redirect_to photos_path
   end
 
   private

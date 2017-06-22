@@ -1,33 +1,42 @@
 
 <%= form_for @dish, html: {multipart: true} do |f| %>
+<div class="form-group">
 
   <%= f.label "Where did you eat?" %> (select venue) <%=link_to 'add', new_venue_path %>
   <br>
   <%= f.collection_select( :venue_id, Venue.all, :id, :venue_name, :prompt => "Pick a venue") %>
 
-  <br>
+</div>
+<div class="form-group">
 
-  <%#= f.label "Image" %>
-  <%#=link_to 'add photo', new_photo_path %>
   <%= f.label "Photo upload" %>
   <%= f.cl_image_upload :image %>
   <%= label_tag "What did you think of it?" %>
   <%= text_field_tag :description %>
 
-  <br>
+</div>
   <%#= f.label "Name of dish" %>
   <%#= f.collection_select( :id, Dish.all, :id, :name, :prompt => "Pick a dish") %>
   <%#= f.text_field :name %>
-  <br>
   <%#= f.label "Name of dish" %>
   <%#= f.collection_select( :id, Dish.all, :id, :name, :prompt => "Pick a dish") %>
   <%#= f.text_field :name %>
-  <%= f.label :categories %> (select categories)
-  <%= f.collection_check_boxes( :category_ids, Category.all, :id, :name, {include_blank: false }, {:multiple => true})%>
 
-  <br>  <%= f.label :cuisines %> (select cuisines)
-  <%= f.collection_check_boxes( :cuisine_ids, Cuisine.all, :id, :category, {include_blank: false }, {:multiple => true})%>
+  <div class="form-group">
+
+  <%= f.label :categories %> (select categories)
   <br>
+  <%= f.collection_check_boxes( :category_ids, Category.all, :id, :name, {include_blank: false }, {:multiple => true})%>
+  </div>
+  <div class="form-group">
+    <!-- <div class="checkbox"> -->
+
+  <%= f.label :cuisines %> (select cuisines)
+  <!-- <div class="checkbox"> -->
+  <br>
+    <%= f.collection_check_boxes( :cuisine_ids, Cuisine.all, :id, :category, {include_blank: false }, {:multiple => true})%>
+<!-- </div> -->
+</div>
 
   <%= f.submit %>
 

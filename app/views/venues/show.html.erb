@@ -10,17 +10,12 @@ Description: <%=@venue.business_description%>
 <br>
 Address: <%=@venue.street_address%>
 <br>
-<%= link_to 'delete', @venue, method: :delete, :data => {:confirm => "are you sure?"}%>
+<!-- <%= link_to 'delete', @venue, method: :delete, :data => {:confirm => "are you sure?"}%> -->
 <br>
   <%@venue.dishes.each do |d|%>
-      <%=d.name%>
-      <div class="col-md-6">
         <%d.photos.each do |p|%>
           <div class="index">
         <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
-        </div>
-
-        <%end%>
       </div>
-
-<%end%>
+        <%end%>
+  <%end%>
