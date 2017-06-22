@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 #consider changing the root later
 
-root to:'dishes#index'
+root to:'photos#index'
 
 #users
 resources :users
@@ -10,9 +10,10 @@ resources :photos
 resources :venues
 resources :cuisines
 resources :dishes
+resources :categories
 
 get '/users/:id/photos' => 'users#photos'
-# 
+#
 # #add dishes form on venue
 # # create
 # get "/works/new" => "works#new"

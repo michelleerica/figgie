@@ -23,7 +23,7 @@ class DishesController < ApplicationController
 
   def create
 
-    raise 'hell'
+    # raise 'hell'
 
     @dish = @current_user.dishes.new(dish_params)
 
@@ -45,13 +45,18 @@ class DishesController < ApplicationController
 
     end  # cloudinary upload
 
+    # if params[:name].present?
+    #
+    #   # use name
+    # elsif params[:]
 
+    # end
 
 
     if @dish.save
-      # save was successful, now add cuisine associations
-      venues = Venue.where id: params[:dish][:venue_ids]
-      @dish.venues << venues
+      # # save was successful, now add cuisine associations
+      # venues = Venue.where id: params[:dish][:venue_ids]
+      # @dish.venues << venues
 
       cuisines = Cuisine.where id: params[:dish][:cuisine_ids]
       @dish.cuisines << cuisines

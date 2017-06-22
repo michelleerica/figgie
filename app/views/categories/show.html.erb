@@ -1,0 +1,20 @@
+<h2><%=@category.name%></h2>
+
+ID: <%=@category.id%>
+
+
+<ul>
+  <%@category.dishes.each do |d|%>
+    <%#=d.venues.first.pluck (:venue_name)%>
+    <%d.photos.each do |p|%>
+    <div class="show">
+      <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
+      <br>
+
+      Venue: (dish available here)
+      <br>
+
+<%end%>
+<%end%>
+
+</ul>

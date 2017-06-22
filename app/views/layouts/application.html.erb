@@ -24,7 +24,7 @@
         <%=link_to 'venues', venues_path %>
         <%=link_to 'friends', users_path %>
         <%=link_to 'cuisines', cuisines_path %>
-        <%=link_to 'dishes', dishes_path %>
+        <%=link_to 'categories', categories_path %>
         <% unless @current_user.present?%>
           <%=link_to 'Login', login_path %>  <%=link_to 'Sign up', new_user_path%>
         <%else%>
