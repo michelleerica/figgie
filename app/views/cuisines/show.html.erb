@@ -1,8 +1,5 @@
 <h2><%=@cuisine.category%></h2>
 
-ID: <%=@cuisine.id%>
-
-
 <ul>
   <%@cuisine.dishes.each do |d|%>
     <%#=d.venues.first.pluck (:venue_name)%>
@@ -11,7 +8,7 @@ ID: <%=@cuisine.id%>
       <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
       <br>
 
-<%end%>
-<%end%>
+    <%end%>
+  <%end%>
 
 </ul>

@@ -23,7 +23,6 @@ class DishesController < ApplicationController
 
   def create
 
-    # raise 'hell'
 
     @dish = @current_user.dishes.new(dish_params)
 

@@ -1,8 +1,5 @@
 <h2>Success!</h2>
 
-<!-- <%#= cl_image_tag @dish.photos.image %> -->
-  <%#raise 'hell'%>
-  <br>
   <%@dish.photos.each do |p|%>
   <div class="index">
     <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
@@ -24,13 +21,9 @@ Category:
   <ul>
     <% @dish.categories.each do |c|%>
       <%= link_to c.name, categories_path(c.id) %>
+      <br>
     <%end%>
   </ul>
   <br>
-  <!-- <div class="selfie">
 
-  <%#= cl_image_tag @user.image%>
-</div>
-  <%#=link_to @dish.user.username, user_path(@dish.user.id) %> said: <%#= @photo.description %>
-  <br> -->
 </ul>

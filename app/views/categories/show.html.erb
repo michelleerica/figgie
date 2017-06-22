@@ -1,19 +1,15 @@
 <h2><%=@category.name%></h2>
 
-ID: <%=@category.id%>
-
-
 <ul>
   <!-- <div class="col-md-4"> -->
   <%@category.dishes.each do |d|%>
-  Venue: <%=d.venue.venue_name%>
+  Venue: <%=link_to d.venue.venue_name, venue_path(d.venue.id)%>
     <%d.photos.each do |p|%>
       <div class="show">
       <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
       <br>
 
     <%end%>
-
   <%end%>
 
 </ul>
