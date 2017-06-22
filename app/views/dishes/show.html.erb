@@ -20,7 +20,7 @@ Cuisine:
 Category:
   <ul>
     <% @dish.categories.each do |c|%>
-      <%= link_to c.name, categories_path(c.id) %>
+      <%= link_to c.name, categories_path(categories_id: :c.id) %>
       <br>
     <%end%>
   </ul>
