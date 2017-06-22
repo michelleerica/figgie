@@ -22,7 +22,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @photo = @category.dishes.first.photos.first
+    @category = Category.find_by :id => params[:id]
+
   end
 
   def destroy

@@ -27,9 +27,7 @@ class DishesController < ApplicationController
 
     @dish = @current_user.dishes.new(dish_params)
 
-
     if params[:file].present?
-
       photo = Photo.new description: params[:description], user: @current_user
 
       #perform upload to cloudinary
@@ -45,18 +43,10 @@ class DishesController < ApplicationController
 
     end  # cloudinary upload
 
-    # if params[:name].present?
-    #
-    #   # use name
-    # elsif params[:]
-
-    # end
-
-
     if @dish.save
       # # save was successful, now add cuisine associations
-      # venues = Venue.where id: params[:dish][:venue_ids]
-      # @dish.venues << venues
+      categories = Category.where id: params[:dish][:category_ids]
+      @dish.categories << categories
 
       cuisines = Cuisine.where id: params[:dish][:cuisine_ids]
       @dish.cuisines << cuisines
@@ -68,9 +58,41 @@ class DishesController < ApplicationController
   end
 
   def edit
+
+    #add authentication
+    if params[:file].present?
+      photo = Photo params[:id]
+      #perform upload to cloudinary
+      req = Cloudinary::Uploader.upload params[:file]
+      photo.image = req['public_id']
+
+      if photo.save
+        puts "=" * 50
+        puts "SAVED PHOTO", photo
+
+        @dish.photos << photo
+      end
+
+    end  # cloudinary upload
+
+    # if @dish.save
+    #   # # save was successful, now add cuisine associations
+    #   categories = Category.where id: params[:dish][:category_ids]
+    #   @dish.categories << categories
+    #
+    #   cuisines = Cuisine.where id: params[:dish][:cuisine_ids]
+    #   @dish.cuisines << cuisines
+    #
+    #   redirect_to dish_path(@dish)
+    # else
+    #   render :new
+    # end
+
   end
 
   def update
+    @dish.update dish_params
+    redirect_to dish_path(params["id"])
 
 
   end
@@ -97,9 +119,5 @@ class DishesController < ApplicationController
   def dish_params
     params.require(:dish).permit(:user_id, :venue_id, :description, :cuisine_id, :photo_id)
   end
-
-  # def photo_params
-  #   params.require(:photo).permit(:image, :user_id, :venue_id, :description, :price_range, :cuisine_id)
-  # end
 
 end
