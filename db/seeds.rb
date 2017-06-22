@@ -1,9 +1,13 @@
 Dish.destroy_all
 
-d1 = Dish.create name: "sushi"
-d2 = Dish.create name: "burger"
-d3 = Dish.create name: "waffles"
-d4 = Dish.create name: "sandwich"
+d1 = Dish.create name: "1"
+d2 = Dish.create name: "2"
+d3 = Dish.create name: "3"
+d4 = Dish.create name: "4"
+d5 = Dish.create name: "5"
+d6 = Dish.create name: "6"
+d7 = Dish.create name: "7"
+d8 = Dish.create name: "8"
 
 Photo.destroy_all
 
@@ -31,136 +35,62 @@ Venue.destroy_all
 v1 = Venue.create venue_name: "Masuya", postcode: 2000, business_description: "Japanese at its best"
 v2 = Venue.create venue_name: "Burgers & Co", postcode: 2000, business_description: "We serve burgers"
 v3 = Venue.create venue_name: "Waffle and stuff", postcode: 2000, business_description: "Waffle-mania"
+v4 = Venue.create venue_name: "Japanese two", postcode: 2000, business_description: "Jap-mania"
+v5 = Venue.create venue_name: "Waffle on and on", postcode: 2000, business_description: "Waffles"
 
 puts "Created #{ Venue.all.length } venues."
 
 Cuisine.destroy_all
-c1 = Cuisine.create category: "Japanese"
-c2 = Cuisine.create category: "Modern Australian"
-c3 = Cuisine.create category: "Fancy Pants"
-c4 = Cuisine.create category: "American"
+cu1 = Cuisine.create category: "Japanese"
+cu2 = Cuisine.create category: "American"
+cu3 = Cuisine.create category: "Chinese"
+cu4 = Cuisine.create category: "Italian"
+cu5 = Cuisine.create category: "French"
+cu6 = Cuisine.create category: "Fast food"
 
-#connect photos and users
-u1.photos << p1 << p2 << p3 << p6
-u2.photos << p5 << p8
-u3.photos << p4 << p7 << p9
-
-
-# user created venues
-u1.venues << v1
-u2.venues << v2 << v3
-
-#photos connected to venues
-# v1.photos << p1 << p2 << p3 << p4
-# v2.photos << p5
-#photos of dishes
-
-d1.photos << p1 << p2 << p3
-d2.photos << p4 << p5
-d3.photos << p6 << p7 << p8 << p9
-d4.photos << p9
-#
-# connect dishes to users
-
-# #dishes at venues
-# d1.venues << v2
-# d2.venues << v1
-
-#link dishes to cuisines (M2M)
-c1.dishes << d1
-d2.cuisines << c2
-c3.dishes << d3
+Category.destroy_all
+cat1 = Category.create name: "Sushi"
+cat2 = Category.create name: "Burger"
+cat3 = Category.create name: "Sandwich"
+cat4 = Category.create name: "Waffles"
+cat5 = Category.create name: "Rice"
+cat6 = Category.create name: "Pork"
+cat7 = Category.create name: "Vegetarian"
 
 
-#link dish to venues (M2M)
+#link dishes to photos
+d1.photos << p1
+d2.photos << p2 << p3
+d3.photos << p4
+d4.photos << p5
+d5.photos << p6
+d6.photos << p7
+d7.photos << p8
+
+
+#link categories to dishes
+cat1.dishes << d1 << d2
+cat2.dishes << d3 << d4
+cat4.dishes << d5 << d6 << d7
+d8.categories << cat3
+
+#link cuisines to dishes
+cu1.dishes << d1 << d2
+cu2.dishes << d3 << d4 << d5 << d6 << d7 << d8
+cu6.dishes << d8
+
+#link user to photos
+u1.photos << p1 << p4 << p6
+u2.photos << p2 << p3 << p5 << p7
+u3.photos << p8 << p9
+
+#link users to dishes
+u1.dishes << d1 << d3 << d5
+u2.dishes << d2 << d4 << d6
+u3.dishes << d7
+
+#link venues to dishes
 v1.dishes << d1
-d2.venues << v2 << v3
-d4.venues << v3
-
-
-
-#
-# s6.mixtapes << m2 << m3
-# s3.mixtapes << m3
-#
-# puts "Song '#{ s3.name }' by '#{ s3.artist.name }' appears on mixtapes:"
-# p s3.mixtapes.pluck :title
-#
-#
-# Mixtape.all.each do |m|
-#   puts '-' * 50
-#   puts "Mixtape '#{ m.title }' has songs:"
-#   p m.songs.pluck :name
-#   puts "SO FIRE!!!1" if m.is_fire
-# end
-#
-# Genre.destroy_all
-# g1 = Genre.create name: "Nautical Rock"
-# g2 = Genre.create name: "Text Rock"
-# g3 = Genre.create name: "Sad Experimental"
-# g4 = Genre.create name: "Post-Jazz"
-# g5 = Genre.create name: "Math Rock"
-# g6 = Genre.create name: "Glam Rock"
-#
-# puts "Created #{ Genre.all.length } genres."
-#
-#
-#  # Add  "All By Electricity"(s1) and "Books on Trains"(s2) to the songs for "Shipping News"(a1)
-# a1.songs << s1 << s2
-#
-# a2.songs << s3
-# a3.songs << s4 << s5
-# a4.songs << s6
-# puts "Artist '#{ a1.name }' has #{ a1.songs.length } songs."
-#
-# alb1.songs << s1 << s2
-# alb2.songs << s3
-# alb3.songs << s4
-# alb4.songs << s6
-# alb5.songs << s5
-#
-# puts "Album '#{ alb1.name }' has #{ alb1.songs.length } songs."
-#
-# # add a bunch of genres to each song
-# s1.genres << g1 << g2 << g5 << g3
-# s2.genres << g1 << g2 << g5 << g3
-# s3.genres << g1
-# s4.genres << g3 << g5
-# s5.genres << g3
-# s6.genres << g4 << g3
-#
-# # from the other direction: add some songs to a genre
-# g6.songs << s4 << s5
-#
-# Genre.all.each do |g|
-#   puts '-' * 50
-#   puts "Genre '#{ g.name }' has songs:"
-#   puts g.songs.pluck :name
-# end
-#
-# Mixtape.destroy_all
-# m1 = Mixtape.create title: "Make-out Music", is_fire: true
-# m2 = Mixtape.create title: "Boat Jams", is_fire: true
-# m3 = Mixtape.create title: "House-cleaning", is_fire: true
-#
-# m1.songs << s3 << s5 << s6 << s4
-# m2.songs << s2 << s1
-#
-# s6.mixtapes << m2 << m3
-# s3.mixtapes << m3
-#
-# puts "Song '#{ s3.name }' by '#{ s3.artist.name }' appears on mixtapes:"
-# p s3.mixtapes.pluck :title
-#
-#
-# Mixtape.all.each do |m|
-#   puts '-' * 50
-#   puts "Mixtape '#{ m.title }' has songs:"
-#   p m.songs.pluck :name
-#   puts "SO FIRE!!!1" if m.is_fire
-# end
-#
-#
-#
-#
-# puts "Done!"
+v3.dishes << d5 << d6 << d7
+v4.dishes << d2
+v5.dishes << d3 << d4
