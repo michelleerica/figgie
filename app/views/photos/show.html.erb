@@ -10,12 +10,17 @@
 
 <div class="selfie">
   <%= cl_image_tag @user.image %>
-
-
   <%=link_to @user.username, user_path(@user.id) %> ate this at <%=link_to @photo.dish.venue.venue_name, venue_path(@photo.dish.venue.id)%>
-  <br>
   Comment: <%= @photo.description %>
   </div>
+
+<!-- <#%raise 'hell'%> -->
+<%unless @current_user.favorite_photos.exists?(id: @photo.id) %>
+<%= link_to '<i class="glyphicon glyphicon-heart"></i>'.html_safe, favorite_photos_path(id: @photo.id), method: :post %>
+<% else %>
+<%= link_to '<i class="glyphicon glyphicon-star-empty"></i>'.html_safe, favorite_photos_path(id: @photo.id), method: :delete %>
+<% end %>
+
   Other photos uploaded by  <%=@user.username%> |
   <ul>
   <%@user.photos.each do |p|%>

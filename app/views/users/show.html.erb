@@ -18,6 +18,20 @@
 <p>About me: <%=@user.bio%></p>
 <p>Website: <%=@user.website%></p>
 
+Favourites:
+
+<%#= link_to "1", photo_path(@user.favorites.first.favorited_id)%>
+
+
+<%@user.favorites.each do |f|%>
+<!-- <div class="index"> -->
+  <!-- <%#raise 'hell'%> -->
+<%= link_to '<i class="glyphicon glyphicon-heart"></i>'.html_safe, photo_path(f.favorited_id)%>
+<%#= link_to "4", photo_path(@user.favorites.third.favorited_id)%>
+<%end%>
+
+
+
 <h2><%=@user.username%>'s photos</h2>
 <%=link_to 'add a dish', new_dish_path(@user_id)%>
 <ul>

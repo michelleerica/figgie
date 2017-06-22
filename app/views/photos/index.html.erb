@@ -4,8 +4,14 @@
 <ul>
   <%@photos.each do |p|%>
   <div class=".col-md-4">
+
     <!-- <%#=link_to p.user.username, user_path(p.user)%> took this photo at <%#=p.venue.venue_name%> -->
     <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
+    <%unless @current_user.favorite_photos.exists?(id: p.id) %>
+    <%= link_to '<i class="glyphicon glyphicon-heart"></i>'.html_safe, favorite_photos_path(p_id: p), method: :post %>
+    <% else %>
+    <%= link_to '<i class="glyphicon glyphicon-star-empty"></i>'.html_safe, favorite_photos_path(p_id: p), method: :delete %>
+    <% end %>
     <div>
       <h6><%=link_to p.user.username, user_path(p.user.id) %> ate this at <%=link_to p.dish.venue.venue_name, venue_path(p.dish.venue.id)%></h6>
     </div>
@@ -13,3 +19,5 @@
   <%end%>
 </div>
 </ul>
+
+glyphicon glyphicon-remove
