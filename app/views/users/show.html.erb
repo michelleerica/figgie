@@ -8,7 +8,7 @@
 
 <div class="show">
 
-  <%= cl_image_tag @user.image %>
+  <%= cl_image_tag @user.image, :class => 'img-rounded' %>
 
 </div>
 <p>Username: <%=@user.username%></p>
@@ -24,7 +24,7 @@
     <!-- <div class="col-xs-3"> -->
         <%@user.photos.each do |p|%>
     <div class="index">
-    <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
+    <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
     </div>
 <!-- </div> -->
 <%end%>

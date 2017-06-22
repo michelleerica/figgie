@@ -1,15 +1,12 @@
-<h2>All dishes <%=link_to '+', new_dish_path(@user_id)%></h2> 
+<h2>All dishes <%=link_to '+', new_dish_path(@user_id)%></h2>
 <br>
   <%@dishes.each do |d|%>
     <%=link_to d.name, dish_path(d.id)%>
     <br>
     <div class="col-xs-12">
     <%d.photos.each do |p|%>
-      <div class="index">
-
-    <!-- <div class="see"> -->
-      <!-- <%#=link_to p.user.username, user_path(p.user)%> took this photo at <%#=p.venue.venue_name%> -->
-      <%= link_to (cl_image_tag p.image), photo_path(p.id) %>
+    <div class="index">
+  <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
     </div>
 
     <%end%>

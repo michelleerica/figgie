@@ -4,8 +4,8 @@
   <%#raise 'hell'%>
   <br>
   <%@dish.photos.each do |p|%>
-  <div class="show">
-    <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
+  <div class="index">
+    <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
 
   </div>
 

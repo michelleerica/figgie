@@ -17,7 +17,7 @@ Address: <%=@venue.street_address%>
       <div class="col-md-6">
         <%d.photos.each do |p|%>
           <div class="index">
-        <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
+        <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
         </div>
 
         <%end%>

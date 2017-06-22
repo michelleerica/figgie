@@ -1,6 +1,6 @@
 <h2>Food - details</h2>
 <div class="show">
-<%= cl_image_tag @photo.image %>
+<%= cl_image_tag @photo.image, :class => 'img-rounded' %>
     <%if @current_user == @user%>
     <br>
     <%=link_to 'edit', edit_dish_path(@photo.dish_id)%> |
@@ -19,7 +19,7 @@
   <ul>
   <%@user.photos.each do |p|%>
     <div class="index">
-    <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'post_preview' %>
+    <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
     </div>
 
 <%end%>
