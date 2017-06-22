@@ -23,7 +23,7 @@ class DishesController < ApplicationController
 
   def create
 
-    # raise 'hell'
+    raise 'hell'
 
     @dish = @current_user.dishes.new(dish_params)
 
@@ -46,6 +46,8 @@ class DishesController < ApplicationController
     end  # cloudinary upload
 
 
+
+
     if @dish.save
       # save was successful, now add cuisine associations
       venues = Venue.where id: params[:dish][:venue_ids]
@@ -64,6 +66,8 @@ class DishesController < ApplicationController
   end
 
   def update
+
+
   end
 
   def index
@@ -72,7 +76,7 @@ class DishesController < ApplicationController
   end
 
   def show
-    # @photo = @dish.photos.first
+    @photo = @dish.photos.first
     # @photo = Photo.find params["id"]
     @user = @dish.user
 
@@ -86,7 +90,7 @@ class DishesController < ApplicationController
 
   private
   def dish_params
-    params.require(:dish).permit(:user_id, :venue_id, :description, :name, :cuisine_id, :photo_id, :venue_id)
+    params.require(:dish).permit(:user_id, :venue_id, :description, :cuisine_id, :photo_id)
   end
 
   # def photo_params

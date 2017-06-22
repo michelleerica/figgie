@@ -3,17 +3,17 @@
 <%= cl_image_tag @photo.image %>
     <%if @current_user == @user%>
     <br>
-    <%=link_to 'edit', edit_photo_path%> |
+    <%=link_to 'edit', edit_dish_path(@photo.dish_id)%> |
     <%= link_to 'delete', @photo, method: :delete, :data => {:confirm => "Are you sure?"}%>
   <%end%>
 </div>
 
 <div class="selfie">
   <%= cl_image_tag @user.image %>
-</div>
+
 
   <%=link_to @user.username, user_path(@user.id) %> said: <%= @photo.description %>
-  <br>
+  </div>
   More on <%=link_to @user.username, user_path(@user.id) %> | <%=@user.bio%> |
   Other photos uploaded by  <%=@user.username%> |
   <ul>
