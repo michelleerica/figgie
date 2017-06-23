@@ -1,6 +1,8 @@
 <h2>All categories</h2>
 
 <ul>
+  <!-- show all categories and link through to each category's show page -->
+
   <% @categories.each do |c|%>
   <li>
     <%= link_to c.name, category_path(c.id) %>

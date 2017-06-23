@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'favorite_photos/create'
-
-  get 'favorite_photos/destroy'
-
 #consider changing the root later
 
 root to:'photos#index'
@@ -16,6 +12,8 @@ resources :cuisines
 resources :dishes
 resources :categories
 resources :favorite_photos, only: [:create, :destroy]
+
+
 
 get '/users/:id/photos' => 'users#photos'
 #

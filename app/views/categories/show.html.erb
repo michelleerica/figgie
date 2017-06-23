@@ -1,7 +1,7 @@
 <h2><%=@category.name%></h2>
 
 <ul>
-  <!-- <div class="col-md-4"> -->
+  <!-- show all venues with dishes under X category. Show photos for each venue listed -->
   <%@category.dishes.each do |d|%>
   Venue: <%=link_to (d.venue.venue_name), venue_path(d.venue)%>
 

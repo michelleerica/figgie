@@ -13,8 +13,6 @@ class VenuesController < ApplicationController
 
   def create
     @venue = @current_user.venues.create venue_params
-    # @photo.update photo_params
-    # raise 'hell'
     redirect_to @venue
   end
 

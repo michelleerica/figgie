@@ -7,10 +7,6 @@ class PhotosController < ApplicationController
     @photo = Photo.find params["id"]
   end
 
-  # def get_venues
-  #   @venues = Venue.all
-  # end
-
   def new
     @photo = Photo.new
     @user = @photo.user
@@ -28,19 +24,7 @@ class PhotosController < ApplicationController
     end
 
     @photo.save
-
-    # if @photo.save
-    #   # save was successful, now add cuisine associations
-    #   cuisines = Cuisine.where id: params[:photo][:cuisine_ids]
-    #   @photo.dishes << cuisines
       redirect_to photo_path(@photo)
-    # else
-    #   render :new
-    # end
-
-
-
-
   end
 
   def edit
@@ -52,12 +36,9 @@ class PhotosController < ApplicationController
       #perform upload to cloudinary
       req = Cloudinary::Uploader.upload params[:file]
       @photo.image = req['public_id']
-
     end
 
-
     @photo.save
-
     redirect_to photo_path(params["id"])
   end
 
@@ -67,7 +48,6 @@ class PhotosController < ApplicationController
 
   def show
     @user = @photo.user
-
   end
 
   def destroy

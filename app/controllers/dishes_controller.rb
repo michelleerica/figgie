@@ -3,15 +3,6 @@ class DishesController < ApplicationController
 
   before_action :check_if_logged_in, except: [:show, :index]
 
-    #
-  # def get_user
-  #   @user = User.find params["id"]
-  # end
-  #
-  # def get_photo
-  #   @photo = Photo.find params["id"]
-  # end
-
   def get_dish
     @dish = Dish.find params["id"]
   end
@@ -22,7 +13,6 @@ class DishesController < ApplicationController
   end
 
   def create
-
 
     @dish = @current_user.dishes.new(dish_params)
 

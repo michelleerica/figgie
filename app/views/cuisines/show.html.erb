@@ -1,6 +1,8 @@
 <h2><%=@cuisine.category%></h2>
 
 <ul>
+  <!-- show all dishes within cuisine. Photos as links for photo show page -->
+
   <%@cuisine.dishes.each do |d|%>
     <%d.photos.each do |p|%>
     <div class="show">
