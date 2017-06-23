@@ -1,5 +1,7 @@
 
 <%= form_for @dish, html: {multipart: true} do |f| %>
+<form class="form-horizontal">
+
 <div class="form-group">
 
   <%= f.label "Where did you eat?" %> (select venue) <%=link_to 'add', new_venue_path %>
@@ -39,5 +41,6 @@
 </div>
 
   <%= f.submit %>
+</div>
 
 <% end %>

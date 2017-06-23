@@ -3,12 +3,12 @@
 <ul>
   <!-- <div class="col-md-4"> -->
   <%@category.dishes.each do |d|%>
-  Venue: <%=link_to d.venue.venue_name, venue_path(d.venue)%>
+  Venue: <%=link_to (d.venue.venue_name), venue_path(d.venue)%>
+
     <%d.photos.each do |p|%>
       <div class="show">
       <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
-      <br>
-
+      </div>
     <%end%>
   <%end%>
 

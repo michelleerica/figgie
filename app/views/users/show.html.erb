@@ -7,36 +7,30 @@
 <br>
 
 <div class="show">
-
   <%= cl_image_tag @user.image, :class => 'img-rounded' %>
-
 </div>
-<p>Username: <%=@user.username%></p>
-<p>Full name: <%=@user.full_name%></p>
-<p>Email: <%=@user.email%></p>
-<p>Instagram: <%=@user.instagram%></p>
-<p>About me: <%=@user.bio%></p>
-<p>Website: <%=@user.website%></p>
+
+  <p>Username: <%=@user.username%></p>
+  <p>Full name: <%=@user.full_name%></p>
+  <p>Email: <%=@user.email%></p>
+  <p>Instagram: <%=@user.instagram%></p>
+  <p>About me: <%=@user.bio%></p>
+  <p>Website: <%=@user.website%></p>
 
 Favourites:
-
 <%@user.favorites.each do |f|%>
-<!-- <div class="index"> -->
-  <!-- <%#raise 'hell'%> -->
-<%= link_to '<i class="glyphicon glyphicon-heart"></i>'.html_safe, photo_path(f.favorited_id)%>
-<%#= link_to "4", photo_path(@user.favorites.third.favorited_id)%>
+
+  <%= link_to '<i class="glyphicon glyphicon-heart"></i>'.html_safe, photo_path(f.favorited_id)%>
 <%end%>
 
 
 <h2><%=@user.username%>'s photos</h2>
 <%=link_to 'add a dish', new_dish_path(@user_id)%>
 <ul>
-    <!-- <div class="col-xs-3"> -->
-        <%@user.photos.each do |p|%>
+  <%@user.photos.each do |p|%>
     <div class="index">
     <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
     </div>
-<!-- </div> -->
-<%end%>
+  <%end%>
 
 </ul>

@@ -1,16 +1,15 @@
 <h2>Venue - details</h2>
 
 Name: <%=@venue.venue_name%>
-<br>
+  <br>
 ID: <%=@venue.id%>
-<br>
+  <br>
 Postcode: <%=@venue.postcode%>
-<br>
+  <br>
 Description: <%=@venue.business_description%>
-<br>
+  <br>
 Address: <%=@venue.street_address%>
-<br>
-<!-- <%= link_to 'delete', @venue, method: :delete, :data => {:confirm => "are you sure?"}%> -->
+  <br>
 <br>
   <%@venue.dishes.each do |d|%>
         <%d.photos.each do |p|%>

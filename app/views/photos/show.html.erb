@@ -13,19 +13,17 @@
   <%=link_to @user.username, user_path(@user.id) %> ate this at <%=link_to @photo.dish.venue.venue_name, venue_path(@photo.dish.venue.id)%>
   <br>
 
-
-<!-- <#%raise 'hell'%> -->
-<%if @current_user != nil %>
-
-  <%unless @current_user.favorite_photos.exists?(id: @photo.id) %>
-    <%= link_to '<i class="glyphicon glyphicon-heart"></i>'.html_safe, favorite_photos_path(id: @photo.id), method: :post %>
-  <% else %>
-    <%= link_to '<i class="glyphicon glyphicon-star-empty"></i>'.html_safe, favorite_photos_path(id: @photo.id), method: :delete %>
+  <%if @current_user != nil %>
+    <%unless @current_user.favorite_photos.exists?(id: @photo.id) %>
+      <%= link_to '<i class="glyphicon glyphicon-heart"></i>'.html_safe, favorite_photos_path(id: @photo.id), method: :post %>
+    <% else %>
+      <%= link_to '<i class="glyphicon glyphicon-star-empty"></i>'.html_safe, favorite_photos_path(id: @photo.id), method: :delete %>
+    <% end %>
   <% end %>
-<% end %>
-<br>
-<%=@user.username%> said: <%= @photo.description %>
+  <br>
+  <%=@user.username%> said: <%= @photo.description %>
 </div>
+
 <br>
   Other photos uploaded by  <%=@user.username%> |
   <ul>
@@ -33,9 +31,5 @@
     <div class="index">
     <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
     </div>
-
-<%end%>
-
+  <%end%>
   </ul>
-
-</ul>
