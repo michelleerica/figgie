@@ -1,25 +1,20 @@
 <!-- <div class="flex-container .col-md-4"> -->
-<ul>
-  <%Photo.all.each do |p|%>
+<%Photo.all.each do |p|%>
   <div class="index">
     <div>
-    <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
-    <%if @current_user != nil %>
-      <%unless @current_user.favorite_photos.exists?(id: p.id) %>
-        <%= link_to '<i class="glyphicon glyphicon-heart"></i>'.html_safe, favorite_photos_path(p_id: p), method: :post %>
-      <% else %>
-        <%= link_to '<i class="glyphicon glyphicon-star-empty"></i>'.html_safe, favorite_photos_path(p_id: p), method: :delete %>
-      <% end %>
-    <% end %>
-    </div>
-    <div>
+      <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
+
       <%if @current_user != nil %>
+        <%unless @current_user.favorite_photos.exists?(id: p.id) %>
+          <%= link_to '<i class="glyphicon glyphicon-heart"></i>'.html_safe, favorite_photos_path(p_id: p), method: :post %>
+        <% else %>
+          <%= link_to '<i class="glyphicon glyphicon-star-empty"></i>'.html_safe, favorite_photos_path(p_id: p), method: :delete %>
+        <% end %>
 
         <h6><%=link_to p.user.username, user_path(p.user.id) %> ate this at <%=link_to p.dish.venue.venue_name, venue_path(p.dish.venue.id)%></h6>
 
       <%end%>
-    </div>
-
   </div>
-  <%end%>
-</ul>
+</div>
+
+<%end%>
