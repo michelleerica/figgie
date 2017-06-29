@@ -1,19 +1,42 @@
 <%Photo.all.each do |p|%>
+
+
+<div class="row">
+      <div class="col s12 m6 l3">
+        <div class="card small">
+          <div class="card-image">
+            <%= link_to (cl_image_tag p.image), photo_path(p.id) %>
+
+
+            <span class="card-title"><%=p.description%></span>
+          </div>
+          <div class="card-content">
+            <p><%if @current_user != nil %>
+              <%unless @current_user.favorite_photos.exists?(id: p.id) %>
+                <%= link_to '<i class="glyphicon glyphicon-heart"></i>'.html_safe, favorite_photos_path(p_id: p), method: :post %>
+              <% else %>
+                <%= link_to '<i class="glyphicon glyphicon-star-empty"></i>'.html_safe, favorite_photos_path(p_id: p), method: :delete %>
+              <%end%>
+            <%if p.dish != nil%>
+
+            <h6><%=link_to p.user.username, user_path(p.user.id) %> ate this at <%=link_to p.dish.venue.venue_name, venue_path(p.dish.venue.id)%></h6>
+                <%end%>
+                <%end%></p>
+          </div>
+          <div class="card-action">
+            <%=link_to "More info", photo_path(p.id)%>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
   <div class="index">
     <div>
-      <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
 
-      <%if @current_user != nil %>
-        <%unless @current_user.favorite_photos.exists?(id: p.id) %>
-          <%= link_to '<i class="glyphicon glyphicon-heart"></i>'.html_safe, favorite_photos_path(p_id: p), method: :post %>
-        <% else %>
-          <%= link_to '<i class="glyphicon glyphicon-star-empty"></i>'.html_safe, favorite_photos_path(p_id: p), method: :delete %>
-        <%end%>
-      <%if p.dish != nil%>
 
-      <h6><%=link_to p.user.username, user_path(p.user.id) %> ate this at <%=link_to p.dish.venue.venue_name, venue_path(p.dish.venue.id)%></h6>
-          <%end%>
-          <%end%>
+
 
     </div>
 </div>

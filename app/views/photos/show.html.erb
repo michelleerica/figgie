@@ -1,35 +1,52 @@
 <h2>Food - details</h2>
-<div class="show">
-<%= cl_image_tag @photo.image, :class => 'img-rounded' %>
-    <%if @current_user == @user%>
-    <br>
-    <%=link_to 'edit', edit_dish_path(@photo.dish_id)%> |
-    <%= link_to 'delete', @photo, method: :delete, :data => {:confirm => "Are you sure?"}%>
-  <%end%>
-</div>
 
-<div class="selfie">
-  <%= cl_image_tag @user.image %>
-  <%=link_to @user.username, user_path(@user.id) %> ate this at <%=link_to @photo.dish.venue.venue_name, venue_path(@photo.dish.venue.id)%>
-  <br>
+<div class="row">
+       <div class="col s12 m7">
+         <div class="card">
+           <div class="card-image">
+             <%= cl_image_tag @photo.image, :class => 'img-rounded' %>
+           </div>
+           <div class="card-content">
+             <%if @current_user == @user%>
+             <%=link_to 'edit', edit_dish_path(@photo.dish_id)%> |
+             <%= link_to 'delete', @photo, method: :delete, :data => {:confirm => "Are you sure?"}%>
+             <div class="selfie">
+               <%=@user.username%> said: <%= @photo.description %>
 
-  <%if @current_user != nil %>
-    <%unless @current_user.favorite_photos.exists?(id: @photo.id) %>
-      <%= link_to '<i class="glyphicon glyphicon-heart"></i>'.html_safe, favorite_photos_path(id: @photo.id), method: :post %>
-    <% else %>
-      <%= link_to '<i class="glyphicon glyphicon-star-empty"></i>'.html_safe, favorite_photos_path(id: @photo.id), method: :delete %>
-    <% end %>
-  <% end %>
-  <br>
-  <%=@user.username%> said: <%= @photo.description %>
-</div>
+               <%= cl_image_tag @user.image %>
+               <%=link_to @user.username, user_path(@user.id) %> ate this at <%=link_to @photo.dish.venue.venue_name, venue_path(@photo.dish.venue.id)%>
+               <br>
+               <%if @current_user != nil %>
+                 <%unless @current_user.favorite_photos.exists?(id: @photo.id) %>
+                   <%= link_to '<i class="glyphicon glyphicon-heart"></i>'.html_safe, favorite_photos_path(id: @photo.id), method: :post %>
+                 <% else %>
+                   <%= link_to '<i class="glyphicon glyphicon-star-empty"></i>'.html_safe, favorite_photos_path(id: @photo.id), method: :delete %>
+                 <% end %>
+               <% end %>
 
-<br>
+           <%end%>
+           </div>
+         </div>
+       </div>
+     </div>
+  </div>
+
   Other photos uploaded by  <%=@user.username%> |
   <ul>
-  <%@user.photos.each do |p|%>
-    <div class="index">
-    <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
-    </div>
-  <%end%>
+    <%@user.photos.each do |p|%>
+
+    <div class="row">
+       <div class="col s12 m7">
+         <div class="card tiny">
+           <div class="card-image">
+             <div class="index">
+             <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-thumbnail' %>
+             </div>
+         </div>
+       </div>
+     </div>
+</div>
+<%end%>
+
+
   </ul>

@@ -43,4 +43,4 @@ Future releases
 Lessons learned / wins
   * Try not to do too many things at once (keep things simple at first)
   * Be clear on what you want to achieve, and build up off that
-  * Get the basics done once (and done right) and go from there. But in saying that, I learnt a LOT about the interrelationship of models and associations in rails
+  * Get the basics done once (and done right) and go from there. But in saying that, I learnt a LOT about the interrelationship of models and associations in rails.

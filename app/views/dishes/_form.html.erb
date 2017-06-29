@@ -25,7 +25,7 @@
   <%= f.collection_check_boxes( :category_ids, Category.all, :id, :name, {include_blank: false }, {:multiple => true})%>
 </div>
 
-<!-- Dishes has a many to many relationship with categories. Need to push to dish.cuisines array - dealt with in controller -->
+<!-- Dishes has a many to many relationship with categories. Need to push to dish array - dealt with in controller -->
 
 <div class="form-group">
   <%= f.label :cuisines %> (select cuisines)

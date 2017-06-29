@@ -5,37 +5,53 @@
     <%= csrf_meta_tags %>
     <%=cloudinary_js_config%>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+  <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   </head>
 
   <body>
-    <div class="topnav" id="myTopnav">
-      <%=link_to 'figgie', root_path, :id => 'logo' %>
-      <!-- <%=link_to 'food', photos_path %> -->
-      <%=link_to 'venues', venues_path %>
-      <%=link_to 'friends', users_path %>
-      <%=link_to 'cuisines', cuisines_path %>
-      <%=link_to 'categories', categories_path %>
 
-      <div class="navbar-right">
+    <nav>
+      <div class="nav-wrapper">
 
-      <% unless @current_user.present?%>
-        <%=link_to 'Login', login_path %>  <%=link_to 'Sign up', new_user_path%>
-      <%else%>
+        <%=link_to 'figgie', root_path, :class => "brand-logo center" %>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
 
-        <%= link_to 'Logout', login_path, method: :delete%>
-        <%= link_to (cl_image_tag @current_user.image, :id => 'icon'), user_path(@current_user)%>
-        <%=link_to '+ ', new_dish_path %>
-      <%end%>
+          <li><%=link_to 'venues', venues_path %></li>
+          <li><%=link_to 'friends', users_path %></li>
+          <li>  <%=link_to 'cuisines', cuisines_path %></li>
+          <li><%=link_to 'categories', categories_path %></li>
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+        <% unless @current_user.present?%>
+          <li><%=link_to 'Login', login_path %>  </li>
+          <li><%=link_to 'Sign up', new_user_path%></li>
+        <%else%>
+          <li><%= link_to 'Logout', login_path, method: :delete%></li>
+          <li><%= link_to (cl_image_tag @current_user.image, :id => 'icon'), user_path(@current_user)%></li>
+          <li><%=link_to '+ ', new_dish_path %></li>
+        <!-- </ul> -->
+        <%end%>
+      </ul>
+      </div>
+    </nav>
+
+
+
+
       </div>
     </div>
     <div class="container-fluid">
