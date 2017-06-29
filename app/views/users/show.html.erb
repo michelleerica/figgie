@@ -20,7 +20,7 @@
 Favourites:
 <%@user.favorites.each do |f|%>
 
-  <%= link_to '<i class="glyphicon glyphicon-heart"></i>'.html_safe, photo_path(f.favorited_id)%>
+  <%= link_to '<i class="tiny material-icons">insert_loyalty</i>'.html_safe, photo_path(f.favorited_id)%>
 <%end%>
 
 

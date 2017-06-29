@@ -13,12 +13,11 @@
           <div class="card-content">
             <p><%if @current_user != nil %>
               <%unless @current_user.favorite_photos.exists?(id: p.id) %>
-                <%= link_to '<i class="glyphicon glyphicon-heart"></i>'.html_safe, favorite_photos_path(p_id: p), method: :post %>
+                <%= link_to '<i class="tiny material-icons">insert_loyalty</i>'.html_safe, favorite_photos_path(p_id: p), method: :post %>
               <% else %>
-                <%= link_to '<i class="glyphicon glyphicon-star-empty"></i>'.html_safe, favorite_photos_path(p_id: p), method: :delete %>
+                <%= link_to '<i class="tiny material-icons">insert_stars</i>'.html_safe, favorite_photos_path(p_id: p), method: :delete %>
               <%end%>
             <%if p.dish != nil%>
-
             <h6><%=link_to p.user.username, user_path(p.user.id) %> ate this at <%=link_to p.dish.venue.venue_name, venue_path(p.dish.venue.id)%></h6>
                 <%end%>
                 <%end%></p>
