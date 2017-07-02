@@ -1,10 +1,15 @@
 <h2>All users</h2>
+<div class="row">
 
 <ul>
   <% @users.each do |u|%>
-  <li>
-    <%= link_to u.username, user_path(u.id) %>
-  </li>
-<%end%>
+  <div class="collection col s12 m6 l3">
 
+  <li>
+    <%= link_to u.username, user_path(u.id), class:'collection-item' %>
+  </li>
+</div>
+
+  <%end%>
 </ul>
+</div>

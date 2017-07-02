@@ -18,13 +18,18 @@
   <p>Website: <%=@user.website%></p>
 
 Favourites:
+<div class='row'>
+
 <%@user.favorites.each do |f|%>
+  <div class="col s1">
 
-  <%= link_to '<i class="tiny material-icons">insert_loyalty</i>'.html_safe, photo_path(f.favorited_id)%>
+  <%= link_to '<i class="small material-icons">star</i>'.html_safe, photo_path(f.favorited_id)%>
+</div>
 <%end%>
+</div>
 
 
-<h2><%=@user.username%>'s photos</h2>
+<h4><%=@user.username%>'s photos</h4>
 <%=link_to 'add a dish', new_dish_path(@user_id)%>
 <ul>
   <%@user.photos.each do |p|%>

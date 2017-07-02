@@ -1,14 +1,19 @@
 <h2>All venues</h2>
+<div class="row">
 
 <ul>
   <% @venues.each do |v|%>
+  <div class="collection col s12 m6 l3">
+
   <li>
-    <%= link_to v.venue_name, venue_path(v.id) %>
+    <%= link_to v.venue_name, venue_path(v.id),class:'collection-item' %>
 
   </li>
-<%end%>
+</div>
 
+  <%end%>
 </ul>
+</div>
 
 <%#=link_to 'Add new venue', new_venue_path(@user_id)%>
 <%=link_to 'Add new dish', new_dish_path(@user_id)%>
