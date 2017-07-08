@@ -33,7 +33,7 @@ class DishesController < ApplicationController
     end  # cloudinary upload
 
     if @dish.save
-      # # save was successful, now add cuisine associations
+      # # save was successful, now add cuisine and category associations (M2M relationship)
       categories = Category.where id: params[:dish][:category_ids]
       @dish.categories << categories
 

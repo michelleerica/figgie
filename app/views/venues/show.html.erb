@@ -1,5 +1,6 @@
 <h2>Venue - details</h2>
 
+
 Name: <%=@venue.venue_name%>
   <br>
 ID: <%=@venue.id%>
@@ -15,15 +16,16 @@ Address: <%=@venue.street_address%>
   <%@venue.dishes.each do |d|%>
         <%d.photos.each do |p|%>
             <div class="col s12 m6 l3">
-              <div class="card">
-                <div class="card-image">
-        <%= link_to (cl_image_tag p.image), photo_path(p.id)%>
-        <div class="card-content">
-</div>
+              <div class="card tiny">
+                <div class="card-image ">
+                  <%= link_to (cl_image_tag p.image), photo_path(p.id)%>
+        <!-- <div class="card-content"> -->
+                </div>
+              </div>
+            </div>
+          </div>
         <%end%>
-      </div>
-    </div>
-  </div>
+
   <%end%>
 
       </div>

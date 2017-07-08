@@ -1,64 +1,54 @@
 <h2>Details</h2>
 
 <div class="row">
-       <div class="col s12 m7">
-         <div class="card">
-           <div class="card-image">
-             <%= cl_image_tag @photo.image %>
-          </div>
-          <div class="card-content">
-            <%if @current_user == @user%>
-            <%=link_to 'edit', edit_dish_path(@photo.dish_id)%> |
-            <%= link_to 'delete', @photo, method: :delete, :data => {:confirm => "Are you sure?"}%>
-             <!-- <ul class=".right-align"> -->
-             <% end %>
+  <div class="col s12 m7">
+     <div class="card">
+      <div class="card-image">
+         <%= cl_image_tag @photo.image %>
+      </div>
+      <div class="card-content">
+        <!-- if current user uploaded the image, user can edit or delete  -->
+        <%if @current_user == @user%>
+          <%=link_to 'edit', edit_dish_path(@photo.dish_id)%> |
+          <%= link_to 'delete', @photo, method: :delete, :data => {:confirm => "Are you sure?"}%>
+        <% end %>
 
-             <%if @current_user != nil %>
-               <%unless @current_user.favorite_photos.exists?(id: @photo.id) %>
-                 <%= link_to '<i class="small material-icons">star</i>'.html_safe, favorite_photos_path(id: @photo.id), method: :post %>
-               <% else %>
-                 <%= link_to '<i class="small material-icons">not_interested</i>'.html_safe, favorite_photos_path(id: @photo.id), method: :post %>
-             <% end %>
-           <!-- </ul>
-             <ul class=".left-align"> -->
+        <!-- current user can favourite/unfavourite a photo same method used for both - favourite/unfavourite dealt with in favorite_photos controller. -->
+         <%if @current_user != nil %>
+           <%unless @current_user.favorite_photos.exists?(id: @photo.id) %>
+             <%= link_to '<i class="small material-icons">star</i>'.html_safe, favorite_photos_path(id: @photo.id), method: :post %>
+           <% else %>
+             <%= link_to '<i class="small material-icons">not_interested</i>'.html_safe, favorite_photos_path(id: @photo.id), method: :post %>
+         <% end %>
 
-            <br>
+        <br>
 
-           <!-- </ul> -->
-
-               <div class="chip">
-                 <!-- link_to (cl_image_tag @.image), photo_path(p.id) -->
-                  <%= cl_image_tag @user.image %>
-                  <%= link_to (@user.username), user_path(@user.id) %>
-                </div>
-               ate this at <%=link_to @photo.dish.venue.venue_name, venue_path(@photo.dish.venue.id)%>
-               <br>
-               Comment: <%= @photo.description %>
-
-           <%end%>
-         </div>
-       </div>
-     </div>
+        <div class="chip">
+            <%= cl_image_tag @user.image %>
+            <%= link_to (@user.username), user_path(@user.id) %>
+        </div>
+         ate this at <%=link_to @photo.dish.venue.venue_name, venue_path(@photo.dish.venue.id)%>
+         <br>
+         Comment: <%= @photo.description %>
+         <%end%>
+      </div>
+    </div>
   </div>
+</div>
 
-  Other photos uploaded by  <%=@user.username%> |
-  <ul>
+Other photos uploaded by  <%=@user.username%> |
+<ul>
 
-     <div class="row small">
-       <%@user.photos.each do |p|%>
-       <div class="col s12 m6 l3">
-         <div class="card">
-           <div class="card-image">
-    <%= link_to (cl_image_tag p.image), photo_path(p.id) %>
+  <div class="row small">
+     <%@user.photos.each do |p|%>
+      <div class="col s12 m6 l3">
+        <div class="card">
+          <div class="card-image">
+            <%= link_to (cl_image_tag p.image), photo_path(p.id) %>
            </div>
-
-
          </div>
-       </div>
-       <%end%>
-
-           </div>
-
-
-
-  </ul>
+      </div>
+     <%end%>
+  </div>
+s
+</ul>

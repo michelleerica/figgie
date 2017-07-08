@@ -1,17 +1,17 @@
 <h2>All categories</h2>
 <div class="row">
 
-<ul>
-  <!-- show all categories and link through to each category's show page -->
+  <ul>
+    <!-- show all categories and link through to each category's show page -->
 
-  <% @categories.each do |c|%>
-  <div class="collection col s12 m6 l3">
+    <% @categories.each do |c|%>
+    <div class="collection col s12 m6 l3">
 
-  <li>
-    <%= link_to c.name, category_path(c.id), class:'collection-item' %>
-  </li>
-</div>
+      <li>
+        <%= link_to c.name, category_path(c.id), class:'collection-item' %>
+      </li>
+    </div>
 
-  <%end%>
-</ul>
+    <%end%>
+  </ul>
 </div>

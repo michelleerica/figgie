@@ -1,39 +1,43 @@
 <!-- main form for uploads -->
 
 <%= form_for @dish, html: {multipart: true} do |f| %>
-<form class="form-horizontal">
+  <form class="form-horizontal">
 
-<div class="form-group">
+  <div class="form-group">
+    <%= f.label "Where did you eat?" %> (select venue) <%=link_to 'add', new_venue_path %>
+    <br>
+    <%= f.collection_select( :venue_id, Venue.all, :id, :venue_name, :prompt => "Pick a venue") %>
+  </div>
+  <!-- Image is saved to Photo model - dishes controller used to add img url to Photo model -->
+  <div class="form-group">
+    <%= f.label "Photo upload" %>
+  </div>
 
-  <%= f.label "Where did you eat?" %> (select venue) <%=link_to 'add', new_venue_path %>
-  <br>
-  <%= f.collection_select( :venue_id, Venue.all, :id, :venue_name, :prompt => "Pick a venue") %>
+  <div class="form-group">
+    <%= f.cl_image_upload :image %>
+  </div>
 
-</div>
-<!-- Image is saved to Photo model - dishes controller used to add img url to Photo model -->
-<div class="form-group">
-  <%= f.label "Photo upload" %>
-  <%= f.cl_image_upload :image %>
-  <%= label_tag "What did you think of it?" %>
-  <%= text_field_tag :description %>
-</div>
+  <div class="form-group">
+    <%= label_tag "What did you think of it?" %>
+    <%= text_field_tag :description %>
+  </div>
 
-<!-- Dishes has a many to many relationship with categories. Need to push to dish.categories array - dealt with in controller -->
-<div class="form-group">
-  <%= f.label :categories %> (select categories)
-  <br>
-  <%= f.collection_check_boxes( :category_ids, Category.all, :id, :name, {include_blank: false }, {:multiple => true})%>
-</div>
+  <!-- Dishes has a many to many relationship with categories. Need to push to dish.categories array - dealt with in controller -->
+  <div class="form-group">
+    <%= f.label :categories %> (select categories)
+    <br>
+    <%= f.collection_check_boxes( :category_ids, Category.all, :id, :name, {include_blank: false }, {:multiple => true})%>
+  </div>
 
-<!-- Dishes has a many to many relationship with categories. Need to push to dish array - dealt with in controller -->
+  <!-- Dishes has a many to many relationship with categories. Need to push to dish array - dealt with in controller -->
 
-<div class="form-group">
-  <%= f.label :cuisines %> (select cuisines)
-  <br>
-  <%= f.collection_check_boxes( :cuisine_ids, Cuisine.all, :id, :category, {include_blank: false }, {:multiple => true})%>
-</div>
+  <div class="form-group">
+    <%= f.label :cuisines %> (select cuisines)
+    <br>
+    <%= f.collection_check_boxes( :cuisine_ids, Cuisine.all, :id, :category, {include_blank: false }, {:multiple => true})%>
+  </div>
 
-  <%= f.submit %>
-</div>
+    <%= f.submit %>
+  </div>
 
 <% end %>

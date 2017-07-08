@@ -1,19 +1,19 @@
 <h2><%=@cuisine.category%></h2>
 <div class="row">
 
-<ul>
-  <!-- show all dishes within cuisine. Photos as links for photo show page -->
+  <ul>
+    <!-- show all dishes within cuisine. Photos as links for photo show page -->
 
-  <%@cuisine.dishes.each do |d|%>
+    <%@cuisine.dishes.each do |d|%>
 
-    <%d.photos.each do |p|%>
-    <div class="col s12 m4 l2">
+      <%d.photos.each do |p|%>
+        <div class="col s12 m4 l2">
 
-      <%= link_to (cl_image_tag p.image), photo_path(p.id),:class => 'img-thumbnail'  %>
-    </div>
+        <%= link_to (cl_image_tag p.image), photo_path(p.id),:class => 'img-thumbnail'  %>
+      </div>
 
+      <%end%>
     <%end%>
-  <%end%>
 
-</ul>
+  </ul>
 </div>

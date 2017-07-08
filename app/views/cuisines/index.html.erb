@@ -1,18 +1,17 @@
 <h2>All cuisines</h2>
 <div class="row">
 
-<ul>
-  <!-- list all cuisines and link through to each cuisine's show page -->
-  <% @cuisines.each do |c|%>
-  <div class="collection col s12 m6 l3">
+  <ul>
+    <!-- list all cuisines and link through to each cuisine's show page -->
+    <% @cuisines.each do |c|%>
+      <div class="collection col s12 m6 l3">
+        <li>
+          <%= link_to c.category, cuisine_path(c.id),class:'collection-item' %>
+        </li>
+      </div>
 
-  <li>
-    <%= link_to c.category, cuisine_path(c.id),class:'collection-item' %>
-  </li>
-</div>
-
-  <%end%>
-</ul>
+    <%end%>
+  </ul>
 </div>
 
 
