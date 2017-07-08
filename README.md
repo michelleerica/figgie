@@ -18,17 +18,20 @@ Link to Heroku
 Packages used
   jquery-rails
   cloudinary
-  bootstrap (limited usage available)
+  materialize.css
 
 Features
   Users can:
-  * upload photos
+  * upload photos of dishes and tag them by venue, cuisine and category
   * 'like'/favourite photos for future reference
   * browse photos based on cuisine, user, category and venue
 
 Known bugs
- * layout is not very nice given issues with using bootstrap
- * users are not able to un-like photos
+  * Heroku version
+    * layout is not very nice given issues with using bootstrap
+    * users are not able to un-like photos
+  * Current GitHub version
+    * Dish upload form (main upload form) does not create associations between the dish uploaded and venue - this appears to be an issue with display due to the use of materialize
 
 Future releases
   * improved layout
