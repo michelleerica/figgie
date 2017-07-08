@@ -17,7 +17,7 @@
                <%unless @current_user.favorite_photos.exists?(id: @photo.id) %>
                  <%= link_to '<i class="small material-icons">star</i>'.html_safe, favorite_photos_path(id: @photo.id), method: :post %>
                <% else %>
-                 <%= link_to '<i class="small material-icons">not_interested</i>'.html_safe, favorite_photos_path(id: @photo.id), method: :delete %>
+                 <%= link_to '<i class="small material-icons">not_interested</i>'.html_safe, favorite_photos_path(id: @photo.id), method: :post %>
              <% end %>
            <!-- </ul>
              <ul class=".left-align"> -->

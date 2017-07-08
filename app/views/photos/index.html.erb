@@ -13,7 +13,7 @@
            <%unless @current_user.favorite_photos.exists?(id: p.id) %>
              <%= link_to '<i class="tiny material-icons">star</i>'.html_safe, favorite_photos_path(p_id: p), method: :post %>
            <% else %>
-             <%= link_to '<i class="tiny material-icons">not_interested</i>'.html_safe, favorite_photos_path(p_id: p), method: :delete %>
+             <%= link_to '<i class="tiny material-icons">not_interested</i>'.html_safe, favorite_photos_path(p_id: p), method: :post %>
            <%end%>
          <%if p.dish != nil%>
          <h6><%=link_to p.user.username, user_path(p.user.id) %> ate this at <%=link_to p.dish.venue.venue_name, venue_path(p.dish.venue.id)%></h6>
