@@ -6,8 +6,11 @@
   <div class="form-group">
     <%= f.label "Where did you eat?" %> (select venue) <%=link_to 'add', new_venue_path %>
     <br>
-    <%= f.collection_select( :venue_id, Venue.all, :id, :venue_name, :prompt => "Pick a venue") %>
+    <%= f.collection_select :venue_id, Venue.all, :id, :venue_name, { prompt: "Choose a category" }, class: "browser-default" %>
   </div>
+
+
+
   <!-- Image is saved to Photo model - dishes controller used to add img url to Photo model -->
   <div class="form-group">
     <%= f.label "Photo upload" %>
