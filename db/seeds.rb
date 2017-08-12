@@ -152,7 +152,7 @@ u4.dishes << d11 << d12 << d13 << d14
 #link venues to dishes
 v1.dishes << d1 << d14
 v3.dishes << d5 << d6 << d7
-v4.dishes << d2
+v4.dishes << d2 << d18
 v5.dishes << d3 << d4 << d8 << d9 << d17 << d19
-v8.dishes << d16
-v9.dishes << d10 << d11 << d12 << d13 
+v8.dishes << d16 << d15
+v9.dishes << d10 << d11 << d12 << d13

@@ -5,11 +5,12 @@
     <div class="card #b2dfdb teal lighten-4">
        <div class="card-image">
         <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-index' %>
-        <span class="card-title"><%=p.description%></span>
+        <!-- <span class="card-title"></span> -->
        </div>
        <div class="card-content">
-        <p>
+         <%=p.description%>
           <!-- if logged in, current user can favourite/unfavourite photos -->
+          <br>
           <%if @current_user != nil %>
              <%unless @current_user.favorite_photos.exists?(id: p.id) %>
              <%= link_to '<i class="tiny material-icons">star</i>'.html_safe, favorite_photos_path(p_id: p), method: :post %>
@@ -21,11 +22,12 @@
              <h6><%=link_to p.user.username, user_path(p.user.id) %> ate this at <%=link_to p.dish.venue.venue_name, venue_path(p.dish.venue.id)%></h6>
            <%end%>
          <%end%>
-         </p>
+         <%=link_to "More info", photo_path(p.id), :class => 'more-info' %>
+
       </div>
-      <div class="card-action">
-        <%=link_to "More info", photo_path(p.id)%>
-      </div>
+      <!-- <div class="card-action">
+        <%=link_to "More info", photo_path(p.id), :class => 'more-info' %>
+      </div> -->
    </div>
  </div>
  <%end%>

@@ -17,7 +17,6 @@ body {
 
 a {
   font-family: 'Lobster', cursive;
-  color: rgb(34, 66, 16) !important;
 }
 
 .small{
@@ -28,7 +27,7 @@ a {
 }
 
 #logo {
-  color: rgb(223, 31, 81);
+  color: rgb(223, 31, 81) !important;
   /*border-radius: 90%;*/
 }
 
@@ -74,8 +73,8 @@ border-width: thick;
   display: inline;
 }
 img{
-  width: 200px ;
-  height: 150px ;
+  width: 200px;
+  height: 150px;
 }
 .img-thumbnail img {
   max-width: 100px;
@@ -84,11 +83,29 @@ img{
 
 }
 
+.face{
+  width: 100% !important;
+  height: 100% !important;
+}
+
 .img-show{
   /*width: 100% !important;*/
   height: 100% ;
 }
+
 .img-preview{
   width: 200px !important;
   height: 500px !important;
+}
+
+.more-info{
+  color: rgb(103, 33, 68) !important;
+  font-size: 10px;
+  text-align: right !important;
+
+}
+
+.card-content{
+  height: 150px;
+  padding:5px;
 }

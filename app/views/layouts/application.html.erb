@@ -22,7 +22,7 @@
   <body>
 
     <nav>
-      <div class="nav-wrapper #00838f cyan darken-3">
+      <div class="nav-wrapper #00838f cyan darken-3 nav-links">
 
         <%=link_to 'figgie', root_path, :class => "brand-logo center" %>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -48,7 +48,7 @@
 
       </div>
     </div>
-    <div class="container-fluid">
+    <div class="container">
       <% unless @current_user.present?%>
         <%=link_to 'Login', login_path %> | <%=link_to 'Sign up', new_user_path%>
       <%else%>
