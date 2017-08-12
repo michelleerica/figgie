@@ -11,20 +11,35 @@ Description: <%=@venue.business_description%>
   <br>
 Address: <%=@venue.street_address%>
   <br>
+
+  <div class="row">
+     <%@venue.dishes.each do |d|%>
+       <%d.photos.each do |p|%>
+      <div class="col s12 m6 l3">
+        <div class="card">
+          <div class="card-image">
+            <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-index'  %>
+           </div>
+         </div>
+      </div>
+     <%end%>
+     <%end%>
+  </div>
+
   <div class="row">
 
-  <%@venue.dishes.each do |d|%>
+  <!-- <%@venue.dishes.each do |d|%>
         <%d.photos.each do |p|%>
             <div class="col s12 m6 l3">
               <div class="card tiny">
                 <div class="card-image ">
                   <%= link_to (cl_image_tag p.image), photo_path(p.id)%>
         <!-- <div class="card-content"> -->
-                </div>
+                <!-- </div>
               </div>
             </div>
         <%end%>
 
-  <%end%>
+  <%end%> --> -->
 
       </div>

@@ -17,6 +17,7 @@ body {
 
 a {
   font-family: 'Lobster', cursive;
+  color: rgb(34, 66, 16) !important;
 }
 
 .small{
@@ -72,10 +73,22 @@ border-width: thick;
   margin: 10px;
   display: inline;
 }
-
+img{
+  width: 200px ;
+  height: 150px ;
+}
 .img-thumbnail img {
   max-width: 100px;
   max-height: 100px;
   border-radius: 10%;
 
+}
+
+.img-show{
+  /*width: 100% !important;*/
+  height: 100% ;
+}
+.img-preview{
+  width: 200px !important;
+  height: 500px !important;
 }

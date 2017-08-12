@@ -4,7 +4,7 @@
   <div class="col s12 m7">
      <div class="card">
       <div class="card-image">
-         <%= cl_image_tag @photo.image %>
+         <%= cl_image_tag @photo.image, :class => 'img-show' %>
       </div>
       <div class="card-content">
         <!-- if current user uploaded the image, user can edit or delete  -->
@@ -20,17 +20,18 @@
            <% else %>
              <%= link_to '<i class="small material-icons">not_interested</i>'.html_safe, favorite_photos_path(id: @photo.id), method: :post %>
          <% end %>
+         <%end%>
+
 
         <br>
 
         <div class="chip">
-            <%= cl_image_tag @user.image %>
+            <%= cl_image_tag @user.image%>
             <%= link_to (@user.username), user_path(@user.id) %>
         </div>
          ate this at <%=link_to @photo.dish.venue.venue_name, venue_path(@photo.dish.venue.id)%>
          <br>
          Comment: <%= @photo.description %>
-         <%end%>
       </div>
     </div>
   </div>
@@ -39,16 +40,16 @@
 Other photos uploaded by  <%=@user.username%> |
 <ul>
 
-  <div class="row small">
+  <div class="row">
      <%@user.photos.each do |p|%>
       <div class="col s12 m6 l3">
         <div class="card">
           <div class="card-image">
-            <%= link_to (cl_image_tag p.image), photo_path(p.id) %>
+            <%= link_to (cl_image_tag p.image), photo_path(p.id), :class => 'img-index'  %>
            </div>
          </div>
       </div>
      <%end%>
   </div>
-s
+
 </ul>

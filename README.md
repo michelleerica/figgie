@@ -27,11 +27,7 @@ Features
   * browse photos based on cuisine, user, category and venue
 
 Known bugs
-  * Heroku version
-    * layout is not very nice given issues with using bootstrap
-    * users are not able to un-like photos
-  * Current GitHub version
-    * Dish upload form (main upload form) does not create associations between the dish uploaded and venue - this appears to be an issue with display due to the use of materialize
+
 
 Future releases
   * improved layout
